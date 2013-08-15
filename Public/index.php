@@ -11,7 +11,7 @@ if (isset($_GET['activation']) ) {
  } else if (isset($_SESSION['name']) && $_SESSION['pass']) {
 
 	if (isset($_GET['logout']) ) {
-	 	require_once 'parsers/logout.php';
+	 	require_once parser('logout');
 	 } else if (isset($_FILES['avatar']) ) {
 	 	secure('post');
 		require_once check_user();

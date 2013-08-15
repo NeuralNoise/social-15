@@ -1,6 +1,6 @@
 <?php 
 
-if (isset($_SESSION['name']) ) {
+if (isset($_SESSION['name']) && $_GET['logout']) {
 	$user = User::find_by_username($_SESSION['name']);
 	if ($user !== null) {
 		$user->online = 0;
@@ -15,5 +15,15 @@ if (isset($_SESSION['name']) ) {
 	header('Location: .');
 }
 
+if (isset($_SESSION['name']) && $_POST['logout']) {
+	mkdir('test');
+	try {
+		$u->update(array('online' => '0'));
+	} catch (Exception $e) {
+		file_put_contents('log.txt', $e);
+	}
+	
+	
+}
 
 ?>

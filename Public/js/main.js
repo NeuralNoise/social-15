@@ -1,3 +1,6 @@
+username = $("header").attr('data-username');
+
+
 function emptyElement(el) {
     $("#" + el).empty();
 }
@@ -131,7 +134,7 @@ function clrNotif(th) {
 }
 
 $(document).ready(function() {
-	var username = $("header").attr('data-username');
+	var defTitle = $(document).attr('title');
 
 	if (username !== undefined) { // If they are logged in
 		setInterval(function() {
@@ -139,9 +142,11 @@ $(document).ready(function() {
 				if (data !== 'empty') {
 					var dataObj = $.parseJSON(data),
 						lastNotifTime = $(".notificationsDropdown>li:eq(1)>a>span").attr('data-time');
-					
-				 	for (var i = 0; i < dataObj.length; i++) {
+					var l = dataObj.length;
+				 	for (var i = 0; i < l; i++) {
 				 		if (dataObj[i].time > lastNotifTime) { // if this notification is not yet appended
+				 			var title = '(' + l + ') ' + defTitle;
+				 			$(document).attr('title', title);
 				 			$(".notificationsDropdown>li:eq(0)").after(dataObj[i].append);
 				 			$(".notificationsDropdown>li:eq(8)").remove();
 				 			$("#notificationsChecked").attr('id', 'notificationsPending');
@@ -183,3 +188,13 @@ function addName() {
 		});
 	}
 }
+
+$(window).unload(function() {
+	if (username !== undefined) { // they are logged in
+		$.post('index.php', {'ajax':1, 'parser':'logout', 'logout':1});
+	}
+});
+
+// $(window).on('beforeunload', function(){
+//   return 'Are you sure you want to leave?';
+// });
