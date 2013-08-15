@@ -1,6 +1,6 @@
 <?php 
 
-if (isset($_SESSION['name']) && $_GET['logout']) {
+if (isset($_SESSION['name']) && isset($_GET['logout'])) {
 	$user = User::find_by_username($_SESSION['name']);
 	if ($user !== null) {
 		$user->online = 0;
