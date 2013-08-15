@@ -1,0 +1,413 @@
+/*
+***********************
+** =Bootstrap Overrides
+***********************
+*/
+.btn-primary-lighten.active {
+  color: rgba(255, 255, 255, 0.75); }
+
+.btn-primary-lighten {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #6b0784;
+  background-image: -moz-linear-gradient(top, #5b0671, #8209a1);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5b0671), to(#8209a1));
+  background-image: -webkit-linear-gradient(top, #5b0671, #8209a1);
+  background-image: -o-linear-gradient(top, #5b0671, #8209a1);
+  background-image: linear-gradient(to bottom, #5b0671, #8209a1);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5b0671', endColorstr='#ff8209a1', GradientType=0);
+  border-color: #8209a1 #8209a1 #480559;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #8209a1;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); }
+
+.btn-primary-lighten:hover,
+.btn-primary-lighten:focus,
+.btn-primary-lighten:active,
+.btn-primary-lighten.active,
+.btn-primary-lighten.disabled,
+.btn-primary-lighten[disabled] {
+  color: #ffffff;
+  background-color: #8209a1;
+  *background-color: #6f0789; }
+
+.btn-primary-lighten:active,
+.btn-primary-lighten.active {
+  background-color: #5b0671; }
+
+.btn-primary.active {
+  color: rgba(255, 255, 255, 0.75); }
+
+.btn-primary {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #4b055e;
+  background-image: -moz-linear-gradient(top, #5b0671, #340341);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5b0671), to(#340341));
+  background-image: -webkit-linear-gradient(top, #5b0671, #340341);
+  background-image: -o-linear-gradient(top, #5b0671, #340341);
+  background-image: linear-gradient(to bottom, #5b0671, #340341);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5b0671', endColorstr='#ff340341', GradientType=0);
+  border-color: #340341 #340341 #000000;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #340341;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); }
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary.disabled,
+.btn-primary[disabled] {
+  color: #ffffff;
+  background-color: #340341;
+  *background-color: #210228; }
+
+.btn-primary:active,
+.btn-primary.active {
+  background-color: #0d0110; }
+
+body {
+  background: url(../img/body_background.png); }
+
+/*
+***********************
+** =Miscellaneous
+***********************
+*/
+.point {
+  cursor: pointer; }
+
+.cont {
+  margin-top: 50px; }
+
+.avatarMini {
+  width: 50px;
+  height: 50px; }
+
+.liveStamp {
+  font-weight: bold;
+  cursor: default; }
+  .liveStamp:hover {
+    color: #2f023a; }
+
+/*
+***********************
+** =Header
+***********************
+*/
+header {
+  position: fixed;
+  top: 0;
+  z-index: 10000;
+  width: 100%;
+  height: 45px;
+  background: url(../img/header-background.png); }
+
+.logo {
+  margin-left: 2px;
+  position: absolute;
+  top: 44px; }
+
+.search {
+  position: absolute;
+  top: 7px;
+  left: 200px; }
+  .search #submitSearch {
+    cursor: pointer;
+    margin-left: -21px;
+    padding-right: 3px; }
+
+.optionsWrap {
+  float: right;
+  margin: 12px 120px 0 0; }
+  .optionsWrap #options {
+    float: right;
+    background: url(../img/gear.png);
+    width: 24px;
+    height: 24px; }
+    .optionsWrap #options:hover {
+      background: url(../img/gear-hover.png); }
+
+.open #options {
+  background: url(../img/gear-hover.png); }
+
+.notificationsWrap {
+  position: absolute;
+  margin: 7px 0 0 135px; }
+  .notificationsWrap .notificationsDropdown {
+    max-height: 520px;
+    overflow: auto; }
+  .notificationsWrap #notifHeader {
+    margin: 0 0 0 20px;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: default; }
+  .notificationsWrap li {
+    padding-top: 10px; }
+    .notificationsWrap li:last-child {
+      margin-left: 20px; }
+    .notificationsWrap li a {
+      font-weight: bold; }
+      .notificationsWrap li a span {
+        font-weight: normal; }
+        .notificationsWrap li a span:hover {
+          color: #2f023a; }
+  .notificationsWrap #notificationsChecked, .notificationsWrap #notificationsPending {
+    float: right;
+    width: 32px;
+    height: 32px; }
+  .notificationsWrap #notificationsChecked {
+    background: url(../img/notification-done.png); }
+    .notificationsWrap #notificationsChecked:hover {
+      background: url(../img/notification-done-hover.png); }
+  .notificationsWrap #notificationsPending {
+    background: url(../img/notification-pending.png); }
+    .notificationsWrap #notificationsPending:hover {
+      background: url(../img/notification-pending-hover.png); }
+  .notificationsWrap #numNotifications {
+    position: absolute;
+    bottom: -3px;
+    right: 20px;
+    background: #d70909;
+    color: white;
+    height: 15px;
+    line-height: 17px;
+    min-width: 16px;
+    text-align: center;
+    border-radius: 4px;
+    padding: 1px;
+    border: 1px solid #740808; }
+
+.open #notificationsChecked {
+  background: url(../img/notification-done-hover.png); }
+
+/*
+***********************
+** =Footer
+***********************
+*/
+footer {
+  background: rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  width: 100%;
+  height: 20px;
+  position: fixed;
+  bottom: 0; }
+  footer:hover {
+    color: #007cba; }
+  footer #version {
+    float: right;
+    margin-right: 40px;
+    cursor: default;
+    font-weight: bold; }
+
+/*
+***********************
+** =LogIn
+***********************
+*/
+#login {
+  width: 250px;
+  margin: 50px auto; }
+
+/*
+***********************
+** =Profile
+***********************
+*/
+.avatarBorder {
+  margin: 10px 20px 20px 10px;
+  padding: 5px;
+  border: 1px solid #b9b7ba;
+  width: 150px;
+  height: 150px;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4); }
+
+.avatar {
+  width: 150px;
+  height: 150px; }
+
+/*
+***********************
+** =My
+***********************
+*/
+#editAvatar {
+  position: absolute;
+  bottom: 1px;
+  left: 78px; }
+
+#avLoad {
+  position: relative;
+  bottom: 23px;
+  left: 18px; }
+
+.myModal {
+  width: 640px;
+  height: 600px;
+  top: 2%;
+  left: 46%; }
+
+.myModal.modal.fade.in {
+  top: 2%; }
+
+.myModal > .modal-body {
+  max-height: 510px; }
+
+#save {
+  position: absolute;
+  left: 80%; }
+
+.sidebarButtons {
+  margin-left: 48px; }
+  .sidebarButtons a {
+    margin-bottom: 5px; }
+
+/*
+***********************
+** =Photo View
+***********************
+*/
+.photoView_photo-wrapper {
+  margin: 50px 0 20px 100px;
+  width: 1240px;
+  position: relative;
+  float: left; }
+
+.photoView_heading {
+  position: absolute;
+  left: 250px;
+  top: 40px;
+  clear: both;
+  margin-right: 10px; }
+
+.chevronLeft, .chevronRight {
+  width: 20px;
+  height: 37px;
+  top: 55px; }
+
+.chevronLeft {
+  position: absolute;
+  left: 160px;
+  background: url(../img/chevron_left.png) no-repeat; }
+  .chevronLeft:hover {
+    background: url(../img/chevron_left_hover.png) no-repeat;
+    cursor: pointer; }
+
+.chevronRight {
+  position: absolute;
+  left: 1000px;
+  background: url(../img/chevron_right.png) no-repeat; }
+  .chevronRight:hover {
+    cursor: pointer; }
+
+.photoView_photo-holder {
+  width: 900px;
+  clear: both;
+  overflow: hidden;
+  float: left;
+  margin-left: 40px;
+  text-align: center; }
+  .photoView_photo-holder #photoView_photo-h {
+    max-height: 600px; }
+  .photoView_photo-holder #photoView_photo-w {
+    width: 900px; }
+  .photoView_photo-holder .photoView_photo {
+    border: 1px solid gray; }
+
+.photoView_comments, .photoView_photo-holder {
+  padding: 5px;
+  border: 1px solid white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  border-radius: 4px; }
+
+.photoView_comments {
+  margin: 0 0 0 10px;
+  width: 260px;
+  float: right; }
+  .photoView_comments .profile {
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 5px; }
+    .photoView_comments .profile .profilePic {
+      float: left; }
+    .photoView_comments .profile .nameDate {
+      float: left;
+      margin-left: 5px; }
+      .photoView_comments .profile .nameDate h5 {
+        margin-top: 2px;
+        margin-bottom: 0;
+        width: 205px; }
+  .photoView_comments ul {
+    list-style: none;
+    margin: 0; }
+    .photoView_comments ul li {
+      border-top: 1px solid gray;
+      padding-top: 5px; }
+      .photoView_comments ul li .photoComment_Avatar img {
+        float: left;
+        margin-right: 5px;
+        width: 35px;
+        height: 35px; }
+      .photoView_comments ul li .photoComment_fullName {
+        margin: 0; }
+      .photoView_comments ul li .photoComment_Body {
+        max-width: 200px; }
+  .photoView_comments .addComment {
+    margin-bottom: 10px; }
+    .photoView_comments .addComment .addComment-input {
+      resize: none;
+      height: 20px; }
+
+/*
+***********************
+** =All Photos View
+***********************
+*/
+.allPhotos_photoWrapper {
+  float: left;
+  overflow: hidden;
+  margin: 5px;
+  width: 200px;
+  height: 200px;
+  border: 1px solid gray; }
+  .allPhotos_photoWrapper:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6); }
+  .allPhotos_photoWrapper .allPhotos_photo {
+    z-index: -1; }
+  .allPhotos_photoWrapper #allPhotos_photo-w {
+    max-width: none;
+    max-height: 100%; }
+
+/*
+***********************
+** =All Notifications View
+***********************
+*/
+.allNotifications_wrap {
+  overflow: auto;
+  height: 550px; }
+  .allNotifications_wrap ul {
+    list-style-type: none;
+    margin: 0; }
+    .allNotifications_wrap ul li {
+      padding: 10px 0;
+      text-align: center; }
+      .allNotifications_wrap ul li a {
+        margin-right: 10px; }
+      .allNotifications_wrap ul li:hover {
+        background: #2f023a;
+        border-radius: 20px; }
+        .allNotifications_wrap ul li:hover a {
+          color: white;
+          font-weight: bold; }
+        .allNotifications_wrap ul li:hover span:hover {
+          cursor: default;
+          color: white; }

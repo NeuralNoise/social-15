@@ -1,0 +1,512 @@
+$baseColor: #2f023a;
+$body_background: url(../img/body_background.png);
+/*
+***********************
+** =Bootstrap Overrides
+***********************
+*/
+
+.btn-primary-lighten.active {
+  color: rgba(255, 255, 255, 0.75);
+}
+.btn-primary-lighten {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #6b0784;
+  background-image: -moz-linear-gradient(top, #5b0671, #8209a1);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5b0671), to(#8209a1));
+  background-image: -webkit-linear-gradient(top, #5b0671, #8209a1);
+  background-image: -o-linear-gradient(top, #5b0671, #8209a1);
+  background-image: linear-gradient(to bottom, #5b0671, #8209a1);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5b0671', endColorstr='#ff8209a1', GradientType=0);
+  border-color: #8209a1 #8209a1 #480559;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #8209a1;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.btn-primary-lighten:hover,
+.btn-primary-lighten:focus,
+.btn-primary-lighten:active,
+.btn-primary-lighten.active,
+.btn-primary-lighten.disabled,
+.btn-primary-lighten[disabled] {
+  color: #ffffff;
+  background-color: #8209a1;
+  *background-color: #6f0789;
+}
+.btn-primary-lighten:active,
+.btn-primary-lighten.active {
+  background-color: #5b0671 ;
+}
+
+
+.btn-primary.active {
+  color: rgba(255, 255, 255, 0.75);
+}
+.btn-primary {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #4b055e;
+  background-image: -moz-linear-gradient(top, #5b0671, #340341);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5b0671), to(#340341));
+  background-image: -webkit-linear-gradient(top, #5b0671, #340341);
+  background-image: -o-linear-gradient(top, #5b0671, #340341);
+  background-image: linear-gradient(to bottom, #5b0671, #340341);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5b0671', endColorstr='#ff340341', GradientType=0);
+  border-color: #340341 #340341 #000000;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  *background-color: #340341;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary.disabled,
+.btn-primary[disabled] {
+  color: #ffffff;
+  background-color: #340341;
+  *background-color: #210228;
+}
+.btn-primary:active,
+.btn-primary.active {
+  background-color: #0d0110 ;
+}
+
+
+body {
+  background: $body_background;
+}
+/*
+***********************
+** =Miscellaneous
+***********************
+*/
+
+.point {
+  cursor: pointer;  
+}
+.cont {
+  margin-top: 50px;
+  // height: 900px;
+}
+.avatarMini {
+  width: 50px;
+  height: 50px;
+}
+.liveStamp {
+  font-weight: bold;
+  cursor: default;
+  &:hover {
+    color: $baseColor;
+  }  
+}
+
+/*
+***********************
+** =Header
+***********************
+*/
+
+header {
+  position: fixed;
+  top: 0;
+  z-index: 10000;
+  width: 100%;
+  height: 45px;
+  background: url(../img/header-background.png);
+} 
+.logo {
+  margin-left: 2px;
+  position: absolute;
+  top: 44px;
+  
+}
+.search {
+  position: absolute;
+  top: 7px;
+  left: 200px;
+  #submitSearch {
+    cursor: pointer;
+    margin-left: -21px;
+    padding-right: 3px;
+  }
+}
+.optionsWrap {
+  float: right;
+  margin: 12px 120px 0 0;
+
+  #options {
+    float: right;
+    background: url(../img/gear.png);
+    width: 24px;
+    height: 24px;
+    &:hover {
+      background: url(../img/gear-hover.png);
+    }
+  }
+}
+
+.open {
+  #options {
+    background: url(../img/gear-hover.png);
+  }
+}
+
+.notificationsWrap {
+  position: absolute;
+  margin: 7px 0 0 135px;
+
+  .notificationsDropdown{
+    max-height: 520px;
+    overflow: auto;
+  }
+  #notifHeader {
+    margin: 0 0 0 20px;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: default;
+  }
+  li {
+    padding-top: 10px;
+
+    &:last-child {
+      margin-left: 20px;
+    }
+    a {
+      font-weight: bold;
+      span {
+        font-weight: normal;
+        &:hover {
+          color: $baseColor;
+        }
+      }
+    }
+  }
+  #notificationsChecked, #notificationsPending {
+    float: right;    
+    width: 32px;
+    height: 32px;
+  }
+  #notificationsChecked {
+    background: url(../img/notification-done.png);
+
+    &:hover {
+      background: url(../img/notification-done-hover.png);
+    }
+  }
+  #notificationsPending {
+    background: url(../img/notification-pending.png);
+
+    &:hover {
+      background: url(../img/notification-pending-hover.png);
+    }
+  }
+  #numNotifications {
+    position: absolute;
+    bottom: -3px;
+    right: 20px;    
+    background: #d70909;
+    color: white;
+    height: 15px;
+    line-height: 17px;
+    min-width: 16px;
+    text-align: center;
+    border-radius: 4px;
+    padding: 1px;
+    border: 1px solid #740808;
+  }
+}
+.open {
+  #notificationsChecked {
+    background: url(../img/notification-done-hover.png);
+  }
+}
+
+/*
+***********************
+** =Footer
+***********************
+*/
+footer {
+  background: rgba(0, 0, 0, .2);
+  overflow: hidden;
+  width: 100%;
+  height: 20px;
+  position: fixed;
+  bottom: 0;
+  &:hover {
+      color: #007cba;
+    }
+  #version {
+    float: right;
+    margin-right: 40px;
+    cursor: default;
+    font-weight: bold;
+
+  }
+}
+/*
+***********************
+** =LogIn
+***********************
+*/
+#login {
+  width: 250px;
+  margin: 50px auto;
+}
+
+/*
+***********************
+** =Profile
+***********************
+*/
+
+.avatarBorder {
+  margin: 10px 20px 20px 10px;
+  padding: 5px;
+  border: 1px solid #b9b7ba;
+  width: 150px;
+  height: 150px;
+  background: white;
+  border-radius: 4px;
+  box-shadow: 3px 3px 5px rgba(0,0,0,.4);
+}
+.avatar {
+  width: 150px;
+  height: 150px;
+}
+
+
+/*
+***********************
+** =My
+***********************
+*/
+#editAvatar {
+  position: absolute; 
+  bottom: 1px; 
+  left: 78px;
+}
+#avLoad {
+  position: relative;
+  bottom: 23px;
+  left: 18px;
+}
+.myModal {
+  width: 640px;
+  height: 600px;
+  top: 2%;
+  left: 46%;
+}
+.myModal.modal.fade.in {
+  top: 2%;
+}
+.myModal > .modal-body {
+  max-height: 510px;
+}
+#save {
+  position: absolute;
+  left: 80%;
+}
+.sidebarButtons {
+  margin-left: 48px;
+
+  a {
+    margin-bottom: 5px;
+  }
+}
+
+/*
+***********************
+** =Photo View
+***********************
+*/
+.photoView_photo-wrapper {
+  margin: 50px 0 20px 100px;
+  width: 1240px;
+  position: relative;
+  float: left;
+  
+}
+.photoView_heading {
+  position: absolute;
+  left: 250px;
+  top: 40px;
+  clear: both;
+  margin-right: 10px;
+}
+.chevronLeft, .chevronRight {
+  width: 20px;
+  height: 37px;
+  top: 55px;
+}
+.chevronLeft {
+  position: absolute;
+  left: 160px;
+  background: url(../img/chevron_left.png) no-repeat;
+  &:hover {
+    background: url(../img/chevron_left_hover.png) no-repeat;
+    cursor: pointer;
+  }
+}
+.chevronRight {
+  position: absolute;
+  left: 1000px;
+  background: url(../img/chevron_right.png) no-repeat;
+  &:hover {
+    cursor: pointer;
+  }
+}
+.photoView_photo-holder {
+  width: 900px;  
+  clear: both;
+  overflow: hidden;
+  float: left;
+  margin-left: 40px;
+  text-align: center;
+
+    #photoView_photo-h {
+      max-height: 600px;
+    }
+    #photoView_photo-w {
+      width: 900px;
+    }
+    .photoView_photo {
+      border: 1px solid gray;
+    }
+    
+}
+.photoView_comments, .photoView_photo-holder {
+  padding: 5px;
+  border: 1px solid white;
+  box-shadow: 0 0 20px rgba(0,0,0,.5);
+  border-radius: 4px;
+}
+.photoView_comments {
+  margin: 0 0 0 10px;
+  width: 260px;
+  float: right;
+
+  .profile {
+    width: 100%;
+    overflow: hidden;
+    padding-bottom: 5px;
+    .profilePic {
+      float: left;
+    }
+    .nameDate {
+      float: left;
+      margin-left: 5px;
+      h5 {
+        margin-top: 2px;
+        margin-bottom: 0;
+        width: 205px;
+      }
+        
+    }
+  }  // End Profile
+  ul {
+    list-style: none;
+    margin: 0;
+    li {
+      border-top: 1px solid gray;
+      padding-top: 5px;
+      &:last-child {
+        
+      }
+      .photoComment_Avatar {
+        img {
+          float: left;
+          margin-right: 5px;
+          width: 35px;
+          height: 35px;
+        }
+      }
+      .photoComment_fullName {
+        margin: 0;
+      }
+      .photoComment_Body {
+        max-width: 200px;
+      }
+    } 
+  } // End comment
+  .addComment {
+    margin-bottom: 10px;
+    .addComment-input {
+      resize: none;
+      height: 20px;
+    }
+  }
+}
+
+/*
+***********************
+** =All Photos View
+***********************
+*/
+.allPhotos_photoWrapper {
+  float: left;
+  overflow: hidden;
+  margin: 5px;
+  width: 200px;
+  height: 200px;
+  &:hover {
+    box-shadow: 0 0 15px rgba(0,0,0,.6);
+  }
+  border: 1px solid gray;
+  .allPhotos_photo {
+    z-index: -1;
+  }
+  #allPhotos_photo-w {
+    max-width: none;
+    max-height: 100%;
+  }
+}
+
+/*
+***********************
+** =All Notifications View
+***********************
+*/
+.allNotifications_wrap {
+  overflow: auto;
+  height: 550px;
+  ul {
+    list-style-type: none;
+    margin: 0;
+
+    li {
+      padding: 10px 0;
+      text-align: center;
+      
+      a {
+        margin-right: 10px;
+
+      }
+      &:hover {
+        background: $baseColor;
+        border-radius: 20px;
+
+        a {
+          color: white;
+          font-weight: bold;
+        }
+        span:hover {
+          cursor: default;
+          color: white;
+        }
+      }
+    }
+  }
+  
+  
+  
+  
+}
