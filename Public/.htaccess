@@ -1,10 +1,5 @@
-# Custom 404 Page
-ErrorDocument 404 /Sites/Social/Public/404.php
-
 # Hide directory file listing
 IndexIgnore *
-
-
 
 Options +FollowSymLinks
 RewriteEngine On
