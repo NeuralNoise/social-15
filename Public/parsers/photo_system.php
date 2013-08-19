@@ -1,21 +1,81 @@
 <?php 
-
+ini_set('memory_limit', '256M');
 use PHPImageWorkshop\ImageWorkshop;
 
 require_once 'dependencies/phpimageworkshop/ImageWorkshop.php';
-
 
 /*
 ***********************
 ** =Upload
 ***********************
 */
+if (isset($_FILES['img']) ) {
+	$allowedExts = array("gif", "jpeg", "jpg", "png", "GIF", "JPEG", "JPG", "PNG");
+	$album = replace_space($_REQUEST['album']);
+	$response = array();
+	foreach ($_FILES["img"]["error"] as $key => $error) {
+		
+		if ($error > 0) {
+			echo "Error: " . $error; die();
+		} else {
+			$name = $_FILES['img']['name'][$key];
+			$tmp  = $_FILES["img"]["tmp_name"][$key];
+			$ext  = pathinfo($name, PATHINFO_EXTENSION);
+			$size = $_FILES['img']['size'][$key];
+			if (!in_array($ext, $allowedExts) ) {
+				echo 'File must be gif, jpg, jpeg or png';
+				die();
+			}
+			list($width, $height) = getimagesize($tmp);
+			if ($width < 350 || $height < 350) {
+				echo "The image has no dimensions";
+				die();		
+			}		
+			if ($size > 5242880 * 8) {
+				echo 'Max File Size is 40 megabytes';
+				die();
+			}
 
+			if (!file_exists("user_data/" . $u->username . "/photos/". $album) ) {
+				mkdir("user_data/" . $u->username . "/photos/". $album, 0755);
+			}
+
+			$new_name = photo_name_generator($ext);
+			$path = "user_data/" . $u->username . '/photos/'. $album .'/'. $new_name;
+			if (move_uploaded_file($tmp, $path) ) {
+				$layer = ImageWorkshop::initFromPath($path);
+				$newLargestSideWidth = 960; // px
+				$conserveProportion = true; 
+				$layer->resizeByLargestSideInPixel($newLargestSideWidth, $conserveProportion);
+
+				$l_dirPath = "user_data/" . $u->username . '/photos/'. $album;
+				$l_filename = $new_name;
+				$l_createFolders = true;
+				$l_backgroundColor = null;
+				$l_imageQuality = 95;
+				$layer->save($l_dirPath, $l_filename, $l_createFolders, $l_backgroundColor, $l_imageQuality);				
+				$new_photo = Photos::create(array(
+							'owner' => $u->username,
+							'album' => $album,
+							'path' => $path,
+							'upload_date' => now()
+							));
+
+				array_push($response, array('p_id' => $new_photo->p_id, 'path' => $new_photo->path));
+			}
+		}
+	}
+	echo 'success';
+	echo json_encode($response); die();
+}
+
+
+// Avatar
 if (isset($_FILES['avatar']) ) {
 	$allowedExts = array("gif", "jpeg", "jpg", "png", "GIF", "JPEG", "JPG", "PNG");
 
 	if ($_FILES["avatar"]["error"] > 0) {
-	  echo "Error: " . $_FILES["avatar"]["error"];die();
+	  echo "Error: " . $_FILES["avatar"]["error"]; die();
 	} else {
 		$name = $_FILES['avatar']['name'];
 		$tmp  = $_FILES["avatar"]["tmp_name"];
@@ -188,7 +248,7 @@ if (isset($_POST['deletePhoto']) ) {
 		$user = $user[0];
 		$user->avatar_id = null;
 		$user->save();
-		$avatar = person_DAO::get_avatar($user->username, $up);
+		$avatar = person_DAO::get_avatar($user->username);
 		if ($avatar !== 'img/default_avatar.jpg') {
 			unlink($avatar);
 		}

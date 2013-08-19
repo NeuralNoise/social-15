@@ -69,7 +69,6 @@ $avatar = person_DAO::get_avatar($this_user->username);
 
 view('views/photo', array(
 	'p' => $p,
-	'u' => $u,
 	'this_user' => $this_user,
 	'title' => mb_convert_case($title, MB_CASE_TITLE, "UTF-8"),
 	'script_bottom' => $script_b,
@@ -77,9 +76,8 @@ view('views/photo', array(
 	'style' => $style,
 	'avatar' => $avatar,
 	'comments_ar' => $comments_ar,
-	'notifications' => $notifications,
-	'my_photo' => $my_photo,
-	'local' => $local
+	'xView' => $xView,
+	'my_photo' => $my_photo
 ));
 
 ?>

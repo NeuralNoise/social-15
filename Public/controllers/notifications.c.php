@@ -20,12 +20,10 @@ $script_b = '
 </script>
 ';
 view('views/notifications', array(
-	'notifications' => $notifications,
-	'u' => $u,
 	'all_notifications' => $all_notifications,
 	'title' => 'Notifications',
 	'script_bottom' => $script_b,
-	'local' => $local
+	'xView' => $xView
 	));
 
 ?>

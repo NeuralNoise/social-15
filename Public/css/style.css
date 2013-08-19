@@ -194,15 +194,15 @@ header {
 footer {
   background: rgba(0, 0, 0, 0.2);
   overflow: hidden;
-  width: 100%;
+  width: 30%;
   height: 20px;
   position: fixed;
   bottom: 0; }
   footer:hover {
     color: #007cba; }
   footer #version {
-    float: right;
-    margin-right: 40px;
+    float: left;
+    margin-left: 20px;
     cursor: default;
     font-weight: bold; }
 
@@ -269,6 +269,28 @@ footer {
   margin-left: 48px; }
   .sidebarButtons a {
     margin-bottom: 5px; }
+
+/*
+***********************
+** =Upload View
+***********************
+*/
+.imgUpload-wrapper {
+  margin-top: 40px;
+  text-align: center; }
+  .imgUpload-wrapper .response {
+    text-align: left; }
+  .imgUpload-wrapper .imgUpload-photo {
+    border-bottom: 1px solid black;
+    margin-bottom: 20px; }
+    .imgUpload-wrapper .imgUpload-photo label {
+      margin-top: 10px; }
+    .imgUpload-wrapper .imgUpload-photo textarea {
+      margin-bottom: 10px;
+      width: 400px;
+      height: 100px; }
+  .imgUpload-wrapper #addDesc {
+    margin-bottom: 40px; }
 
 /*
 ***********************

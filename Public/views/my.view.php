@@ -46,7 +46,7 @@
   </div>
 </div>
 
-<form action="" method="post" onsubmit="return false;" hidden>
+<form method="post" onsubmit="return false;" hidden>
 	<input type="file" id="upAv" name="avatar" accept="image/png,image/jpg,image/gif,image/jpeg">
 </form>
 <?php include 'views/crop_avatar.php'; ?>

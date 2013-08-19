@@ -15,9 +15,7 @@ if ($message === 'not_active') {
 view('views/message', array(
         'title' => 'Error',
         'message' => $m,
-        'notifications' => $notifications,
-        'u' => $u,
-        'local' => $local
+        'xView' => $xView
         ));
 
 

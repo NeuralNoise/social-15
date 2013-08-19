@@ -21,20 +21,16 @@ $script_b = "<script src='js/photos.js'></script>
 if ($key === 'all') {
 	view('views/photos_all', array(
 		'title' => $title,
-		'u' => $u,
 		'this_user' => $this_user,
 		'script_bottom' => $script_b,
-		'notifications' => $notifications,
-		'local' => $local
+		'xView' => $xView
 		));
 } else if ($key === 'albums') {
 	view('views/photos_albums', array(
 		'title' => $title,
-		'u' => $u,
 		'this_user' => $this_user,
 		'script_bottom' => $script_b,
-		'notifications' => $notifications,
-		'local' => $local
+		'xView' => $xView
 		));
 } else {
 	header('Location:' . BASE_DIR);

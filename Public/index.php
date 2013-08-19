@@ -3,15 +3,31 @@
 require_once 'includes/social.php';
 session_start();
 
-
 if (isset($_GET['activation']) ) {
  	secure('get');
  	require_once parser('activation');
 
  } else if (isset($_SESSION['name']) && $_SESSION['pass']) {
 
-	if (isset($_GET['logout']) ) {
+	if (isset($_GET['upload']) ) {
+	 	secure('get');
+	 	require_once check_user();
+	 	if ($user_ok) {
+	 		require_once main_inc();
+	 		require_once controller('upload');
+	 	}
+
+	 } else if (isset($_GET['logout']) ) {
 	 	require_once parser('logout');
+
+	 } else if (isset($_FILES['img']) ) {
+	 	secure('post');
+		require_once check_user();
+		if ($user_ok) {
+			require_once main_inc();
+			require_once parser('photo');
+		}
+
 	 } else if (isset($_FILES['avatar']) ) {
 	 	secure('post');
 		require_once check_user();
@@ -19,6 +35,7 @@ if (isset($_GET['activation']) ) {
 			require_once main_inc();
 			require_once parser('photo');
 		}
+
 	 } else if (isset($_POST['ajax']) ) {
 		secure('post');
 		require_once check_user();
@@ -26,6 +43,7 @@ if (isset($_GET['activation']) ) {
 			require_once main_inc();
 			require_once parser($_POST['parser']);
 		}
+
 	} else if (isset($_GET['user']) && isset($_GET['notifications']) ) {
 	 	secure('get');
 	 	require_once check_user();
@@ -33,6 +51,7 @@ if (isset($_GET['activation']) ) {
 	 		require_once main_inc();
 	 		require_once controller('notifications');
 	 	}
+
 	 } else if (isset($_GET['message']) ) {
 	 	secure('get');
 	 	require_once check_user();

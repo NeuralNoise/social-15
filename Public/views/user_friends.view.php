@@ -10,7 +10,9 @@
       </a>
     <?php endif ?>     	
     </div>
-    <a href="<?= $this_user->username . '/photos/all' ?>" class="btn btn-info" id="showPictures">Photos</a>
+    <div class="sidebarButtons">
+      <a href="<?= $this_user->username . '/photos/all' ?>" class="btn btn-info" id="showPictures">Photos</a>  
+    </div>
   </div> <!-- End Sidebar -->
   <div class="span8">
       <h1><?= $title ?>'s Profile</h1>

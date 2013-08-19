@@ -11,7 +11,10 @@ RewriteRule ^([a-zA-Z0-9_-]+)$ index.php?user=$1
 RewriteRule ^([a-zA-Z0-9_-]+)/$ index.php?user=$1
 
 RewriteRule ^!logout$ index.php?logout
-RewriteRule ^!logout/$ index.php?logout
+RewriteRule ^!logout/$ index.php?logout 
+
+RewriteRule ^!upload$ index.php?upload
+RewriteRule ^!upload/$ index.php?upload
 
 RewriteRule ^message/([a-zA-Z0-9_-]+)$ index.php?message=$1
 RewriteRule ^message/([a-zA-Z0-9_-]+)/$ index.php?message=$1

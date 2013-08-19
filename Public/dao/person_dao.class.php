@@ -17,7 +17,7 @@ class person_DAO
 
 	public function friends() {
 		// SELECT * FROM friends WHERE user1 = $this->username AND accepted = 1 OR user2 = $this->username AND accepted = 1;
-		$cond = array('conditions' => array('user1 = ? OR user2 = ? AND accepted="1"', $this->username, $this->username) );
+		$cond = array('conditions' => array('user1 = ? AND accepted = "1" OR user2 = ? AND accepted="1"', $this->username, $this->username) );
 		$friends = Friends::all($cond);
 		$all = array();
 
@@ -89,8 +89,8 @@ class person_DAO
 		return Photos::find($user->avatar_id)->path;
 	}
 
-	public static function get_avatar($user, $up = '') {
-	    @$avatar = glob($up . "user_data/" . $user . '/avatar/avatar.*')[0];
+	public static function get_avatar($user) {
+	    @$avatar = glob("user_data/" . $user . '/avatar/avatar.*')[0];
 	    if (empty($avatar) ) {
 	    	return 'img/default_avatar.jpg';
 	    }

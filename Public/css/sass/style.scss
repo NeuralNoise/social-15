@@ -237,7 +237,7 @@ header {
 footer {
   background: rgba(0, 0, 0, .2);
   overflow: hidden;
-  width: 100%;
+  width: 30%;
   height: 20px;
   position: fixed;
   bottom: 0;
@@ -245,8 +245,8 @@ footer {
       color: #007cba;
     }
   #version {
-    float: right;
-    margin-right: 40px;
+    float: left;
+    margin-left: 20px;
     cursor: default;
     font-weight: bold;
 
@@ -320,6 +320,37 @@ footer {
 
   a {
     margin-bottom: 5px;
+  }
+}
+
+/*
+***********************
+** =Upload View
+***********************
+*/
+.imgUpload-wrapper {
+  margin-top: 40px;
+  text-align: center;
+
+  .response {
+    text-align: left;
+  }
+  .imgUpload-photo {
+    border-bottom: 1px solid black;
+    margin-bottom: 20px;
+
+    label {
+      margin-top: 10px;
+    }
+    textarea {
+      margin-bottom: 10px;
+      width: 400px;
+      height: 100px;
+    }
+  }
+
+  #addDesc {
+    margin-bottom: 40px;
   }
 }
 

@@ -141,8 +141,8 @@ $(document).ready(function() {
 			$.post('index.php', {'ajax':1, 'parser':'notification', 'check': 1}, function(data) {
 				if (data !== 'empty') {
 					var dataObj = $.parseJSON(data),
-						lastNotifTime = $(".notificationsDropdown>li:eq(1)>a>span").attr('data-time');
-					var l = dataObj.length;
+						lastNotifTime = $(".notificationsDropdown>li:eq(1)>a>span").attr('data-time'),
+						l = dataObj.length;
 				 	for (var i = 0; i < l; i++) {
 				 		if (dataObj[i].time > lastNotifTime) { // if this notification is not yet appended
 				 			var title = '(' + l + ') ' + defTitle;

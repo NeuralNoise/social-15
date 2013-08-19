@@ -12,7 +12,7 @@
 	</div>
 	<?php if (empty($this_user) ): ?>
 		<div class="span2">
-			<a href="" >Upload a Photo</a>
+			<a href="./!upload" >Upload a Photo</a>
 		</div>	
 	<?php endif ?>	
 </div>

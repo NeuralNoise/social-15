@@ -42,33 +42,27 @@ $script = "<script src='js/user.js'></script>";
 if (!empty($blocked_me)) {
 	view("views/user_blocked", array(
 	'this_user' => $this_user,
-	'u' => $u,
 	'title' => mb_convert_case($title, MB_CASE_TITLE, "UTF-8"),
-	'notifications' => $notifications,
-	'local' => $local
+	'xView' => $xView
 	));
 } else if (!empty($friends) ) {
 	view("views/user_friends", array(
 	'this_user' => $this_user,
-	'u' => $u,
 	'title' => mb_convert_case($title, MB_CASE_TITLE, "UTF-8"),
 	'avatar' => $avatar,
 	'script_bottom' => $script,
-	'notifications' => $notifications,
-	'local' => $local
+	'xView' => $xView
 	));
 } else {
 	view("views/user", array(
 	'this_user' => $this_user,
-	'u' => $u,
 	'title' => mb_convert_case($title, MB_CASE_TITLE, "UTF-8"),
 	'script_bottom' => $script,
 	'pending' => $pending,
 	'waiting' => $waiting,
 	'blocked_this_user' => $blocked_this_user,
 	'avatar' => $avatar,
-	'notifications' => $notifications,
-	'local' => $local
+	'xView' => $xView
 	));
 }
 
