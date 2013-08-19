@@ -21,7 +21,13 @@
 				</div>
 			</div>
 			<div class="description">
-				<p><?= $p->description ?></p>
+				<?php if ($my_photo): ?>
+					<a href="" data-toggle="modal" data-target="#descriptionModal"><?= $p->description ?> <br><b> (Edit Description)</b></a>
+					<?php include 'views/description.php'; ?>
+				<?php else: ?>
+					<p><?= $p->description ?></p>	
+				<?php endif ?>
+				
 			</div>
 			<div class="addComment">
 				<textarea class="addComment-input" onkeydown="resizeTextArea(); checkEnter(this);" placeholder="Add a Comment"></textarea>

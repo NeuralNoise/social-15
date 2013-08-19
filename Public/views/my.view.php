@@ -1,5 +1,5 @@
 <div class="row-fluid">
-  <div class="span2 offset1">
+  <div class="span2 offset1 sidebar">
     <!--Sidebar content-->
     <div class="avatarBorder">
     <?php if ($avatar[0] !== 'i'): ?> <!-- If it's not the default picture include the link to the photo -->
@@ -24,6 +24,7 @@
     <span id="status"></span>
     <div class="sidebarButtons">
       <a href="<?= $u->username . '/photos/all' ?>" class="btn btn-info" id="showPictures">Photos</a>
+      <br>
       <button class="btn btn-info" id="showAllUsers" title="Защото search-a не работи :)">All Users</button>
     </div>
     <?php include 'views/all_users.php'; ?>

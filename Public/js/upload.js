@@ -53,7 +53,6 @@ input.change(function() {
                     dataObj = $.parseJSON(json),
                     l = dataObj.length,
                     r = '';
-                    console.log(json);
                 wrap.hide();
                 wrap.html('');
                 for (var i = 0; i < l; i++) {
@@ -64,7 +63,8 @@ input.change(function() {
                               "<textarea name='"+ dataObj[i].p_id +"' id='"+ dataObj[i].p_id +"'></textarea>" +
                           "</div>";
                 }
-                r += "<br><button class='btn btn-primary-lighten' id='addDesc'>Submit</button>";
+                r += "<button class='btn btn-primary-lighten' id='addDesc' onclick='addDesc();'>Submit</button><br>";
+                r += "<div id='addDescStatus' class='text-success'></div>";
                 wrap.html(r);
                 wrap.fadeIn('slow');
             } else {
@@ -77,3 +77,35 @@ input.change(function() {
         }
     });
 });
+
+/*
+***********************
+** =Descriptions
+***********************
+*/
+function addDesc() {
+    var button = $("#addDesc"),
+        inputs = $("textarea"),
+        data = '',
+        l = inputs.length,
+        status = $("#addDescStatus");
+    button.hide();
+    status.html('<img src="img/ajax-load-large.gif">');    
+    for (var i = 0; i < l; i++) {
+        var input = inputs.eq(i);
+        if (input.val() !== '') {
+            data += input.attr('name') + ':' + input.val() + '//';    
+        }        
+    }
+    if (data !== '') {
+        $.post('index.php', {'ajax':1, 'parser':'photo', 'addDescription':1, 'many':1, 'data':data}, function(data) {
+            if (data == 'success') {
+                status.html('Success');
+                setTimeout(function(){location.assign('index.php')},700);
+            }
+        });
+    } else {
+        status.html('Success');
+        setTimeout(function(){location.assign('index.php')},700);
+    }
+}

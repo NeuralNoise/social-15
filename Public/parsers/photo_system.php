@@ -1,5 +1,5 @@
 <?php 
-ini_set('memory_limit', '256M');
+
 use PHPImageWorkshop\ImageWorkshop;
 
 require_once 'dependencies/phpimageworkshop/ImageWorkshop.php';
@@ -303,4 +303,36 @@ if (isset($_POST['makeProfile']) ) {
 	die();
 
 }
-?>
+
+
+/*
+***********************
+** =Descriptions
+***********************
+*/
+if (isset($_POST['addDescription']) ) {
+	if (isset($_POST['many']) ) {
+		$data = $_POST['data'];
+		$arr = explode('//', $data);
+		array_pop($arr);
+
+		foreach ($arr as $str) {
+			$a = explode(':', $str);
+			$p = Photos::find($a[0]);
+			$p->description = $a[1];
+			$p->save();
+		}
+		echo 'success';die;
+
+	} else {
+		$p_id = $_POST['p_id'];
+		$desc = $_POST['desc'];
+		if (empty($desc) ) {
+			$desc = null;
+		}
+		$p = Photos::find($p_id);
+		$p->description = $desc;
+		$p->save();
+		echo 'success';die;
+	}	
+}

@@ -266,7 +266,7 @@ footer {
   left: 80%; }
 
 .sidebarButtons {
-  margin-left: 48px; }
+  text-align: center; }
   .sidebarButtons a {
     margin-bottom: 5px; }
 
@@ -281,15 +281,20 @@ footer {
   .imgUpload-wrapper .response {
     text-align: left; }
   .imgUpload-wrapper .imgUpload-photo {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #8209a1;
     margin-bottom: 20px; }
+    .imgUpload-wrapper .imgUpload-photo img {
+      border: 1px solid #8209a1;
+      padding: 5px;
+      background: white;
+      border-radius: 6px; }
     .imgUpload-wrapper .imgUpload-photo label {
       margin-top: 10px; }
     .imgUpload-wrapper .imgUpload-photo textarea {
       margin-bottom: 10px;
       width: 400px;
       height: 100px; }
-  .imgUpload-wrapper #addDesc {
+  .imgUpload-wrapper #addDescStatus {
     margin-bottom: 40px; }
 
 /*
@@ -367,6 +372,13 @@ footer {
         margin-top: 2px;
         margin-bottom: 0;
         width: 205px; }
+  .photoView_comments .description {
+    width: 250px;
+    margin-bottom: 20px; }
+    .photoView_comments .description a {
+      color: #333333; }
+      .photoView_comments .description a b {
+        color: #8209a1; }
   .photoView_comments ul {
     list-style: none;
     margin: 0; }
@@ -387,6 +399,12 @@ footer {
     .photoView_comments .addComment .addComment-input {
       resize: none;
       height: 20px; }
+
+#descriptionModal .modal-body {
+  text-align: center; }
+  #descriptionModal .modal-body textarea {
+    width: 90%;
+    height: 300px; }
 
 /*
 ***********************

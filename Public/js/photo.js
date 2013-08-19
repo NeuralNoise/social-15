@@ -120,3 +120,27 @@ function checkEnter(th) {
         });
     });
 })(jQuery);
+
+/*
+***********************
+** =Description
+***********************
+*/
+var d = $("#descriptionModalSubmit"),
+	desc = $("#descriptionModalInput"),
+	defaultDesc = desc.val();
+
+d.on('click', function () {
+	var newDesc = desc.val(),
+		modal = $("#descriptionModal");
+		console.log(photoId);
+	if (newDesc !== defaultDesc) {
+		$.post('index.php', {'ajax':1, 'parser':'photo', 'addDescription':1, 'p_id':photoId, 'desc':newDesc}, function(data) {
+			if (data == 'success') {
+				modal.modal('hide');
+				$(".description > a").html(newDesc + ' <br><b> (Edit Description)</b>');
+				defaultDesc = newDesc;
+			}
+		});
+	}
+});

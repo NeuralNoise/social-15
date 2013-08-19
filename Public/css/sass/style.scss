@@ -1,4 +1,5 @@
-$baseColor: #2f023a;
+$baseColor-darken: #2f023a;
+$baseColor: #8209a1;
 $body_background: url(../img/body_background.png);
 /*
 ***********************
@@ -104,7 +105,7 @@ body {
   font-weight: bold;
   cursor: default;
   &:hover {
-    color: $baseColor;
+    color: $baseColor-darken;
   }  
 }
 
@@ -184,7 +185,7 @@ header {
       span {
         font-weight: normal;
         &:hover {
-          color: $baseColor;
+          color: $baseColor-darken;
         }
       }
     }
@@ -316,8 +317,8 @@ footer {
   left: 80%;
 }
 .sidebarButtons {
-  margin-left: 48px;
-
+  // margin-left: 48px;
+  text-align: center;
   a {
     margin-bottom: 5px;
   }
@@ -336,9 +337,15 @@ footer {
     text-align: left;
   }
   .imgUpload-photo {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid $baseColor;
     margin-bottom: 20px;
-
+    
+    img {
+      border: 1px solid $baseColor;
+      padding: 5px;
+      background: white;
+      border-radius: 6px;
+    }
     label {
       margin-top: 10px;
     }
@@ -349,7 +356,7 @@ footer {
     }
   }
 
-  #addDesc {
+  #addDescStatus{
     margin-bottom: 40px;
   }
 }
@@ -443,6 +450,22 @@ footer {
         
     }
   }  // End Profile
+  .description {
+    width: 250px;
+    margin-bottom: 20px;
+    // overflow: auto;
+    
+    a {
+      color: #333333;
+      
+      b {
+        color: $baseColor;
+      }
+      &:hover b {
+        
+      }
+    }
+  }
   ul {
     list-style: none;
     margin: 0;
@@ -476,7 +499,16 @@ footer {
     }
   }
 }
+#descriptionModal {
+  .modal-body {
+    text-align: center;
 
+    textarea {
+      width: 90%;
+      height: 300px;
+    }
+  }
+}
 /*
 ***********************
 ** =All Photos View
@@ -522,7 +554,7 @@ footer {
 
       }
       &:hover {
-        background: $baseColor;
+        background: $baseColor-darken;
         border-radius: 20px;
 
         a {
