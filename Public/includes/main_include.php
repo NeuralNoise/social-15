@@ -1,5 +1,16 @@
 <?php 
 
+/*
+***********************
+** =First and last name check
+***********************
+*/
+$has_name = true;
+if (isset($u) ) {
+    if ($u->first_name == '' || $u->last_name == '') {
+        $has_name = false;
+    }
+}
 
 /*
 ***********************
@@ -14,5 +25,5 @@ $notifications = array('notif_new' => $u->dao->check_notif(), 'notif_top' => $u-
 ** =All Views Data
 ***********************
 */
-$xView = array('notifications' => $notifications, 'local' => $local, 'u' => $u);
+$xView = array('notifications' => $notifications, 'local' => $local, 'u' => $u, 'has_name' => $has_name);
 ?>

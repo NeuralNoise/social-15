@@ -25,12 +25,12 @@
     <div class="sidebarButtons">
       <a href="<?= $u->username . '/photos/all' ?>" class="btn btn-info" id="showPictures">Photos</a>
       <br>
-      <button class="btn btn-info" id="showAllUsers" title="Защото search-a не работи :)">All Users</button>
+      <button class="btn btn-info" id="showAllUsers" title="Временно!">All Users</button>
     </div>
     <?php include 'views/all_users.php'; ?>
     <!-- End of sidebar-->
   </div>
-  <div class="span8 gray">
+  <div class="span8">
       <h1><?= $title ?>'s Profile</h1>
 	<ul>
 		<li>Am I the owner of this profile: Yes</li>

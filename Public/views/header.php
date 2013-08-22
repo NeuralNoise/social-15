@@ -6,9 +6,9 @@
 		</a>		
 	</div>
 	<div class="container-fluid">
-		<form class="form-search search">
+		<form class="form-search search" onsubmit="searchSubmit(); return false;">
 			<input type="text" class="input-medium search-query">
-			<i class="icon-search" id="submitSearch"></i>
+			<i class="icon-search" id="submitSearch" onclick="searchSubmit();"></i>
 		</form>
 		
 		<div class="dropdown optionsWrap">

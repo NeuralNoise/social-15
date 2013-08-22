@@ -82,7 +82,7 @@ body {
 .point {
   cursor: pointer; }
 
-.cont {
+.cont, .searchResults {
   margin-top: 50px; }
 
 .avatarMini {
@@ -451,3 +451,28 @@ footer {
         .allNotifications_wrap ul li:hover span:hover {
           cursor: default;
           color: white; }
+
+/*
+***********************
+** =Search Results
+***********************
+*/
+.searchResults {
+  background: white;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #8209a1;
+  box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.5); }
+  .searchResults .searchCard {
+    padding: 20px;
+    overflow: hidden;
+    margin: auto; }
+    .searchResults .searchCard img {
+      width: 100px;
+      height: 100px;
+      float: left; }
+    .searchResults .searchCard a {
+      float: left;
+      margin-left: 20px; }

@@ -93,7 +93,7 @@ body {
 .point {
   cursor: pointer;  
 }
-.cont {
+.cont, .searchResults {
   margin-top: 50px;
   // height: 900px;
 }
@@ -454,7 +454,7 @@ footer {
     width: 250px;
     margin-bottom: 20px;
     // overflow: auto;
-    
+
     a {
       color: #333333;
       
@@ -568,8 +568,35 @@ footer {
       }
     }
   }
-  
-  
-  
-  
+}
+
+/*
+***********************
+** =Search Results
+***********************
+*/
+.searchResults {
+  background: white;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid $baseColor;
+  box-shadow: 5px 10px 20px rgba(0,0,0,.5);
+
+  .searchCard {
+    padding: 20px;
+    overflow: hidden;
+    margin: auto;
+
+    img {
+      width: 100px;
+      height: 100px;
+      float: left;
+    }
+    a {
+      float: left;
+      margin-left: 20px;
+    }
+  }
 }

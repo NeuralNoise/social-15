@@ -198,3 +198,44 @@ $(window).unload(function() {
 // $(window).on('beforeunload', function(){
 //   return 'Are you sure you want to leave?';
 // });
+
+/*
+***********************
+** =Search
+***********************
+*/
+function searchSubmit() {
+	var input = $(".search > input"),
+		container = $(".searchResults");
+	$.post('index.php', {'ajax':1, 'parser':'search', 'method':'normal', 'str':input.val()}, function(data) {
+		try {
+		   var json = $.parseJSON(data),
+		   	   cards = '',
+		   	   l = json.length;
+		   console.log(json);
+		   for (var i = 0; i < l; i++) {
+			    cards += "<div class='searchCard'>"+
+							"<a href='./"+ json[i].username +"'><img src='"+ json[i].avatar +"' alt='avatar'></a>"+
+							"<div class='searchCardInfo'>"+
+								"<a href='./"+ json[i].username +"'>"+ json[i].full_name +"</a>"+
+							"</div>"+
+						  "</div>";
+		   }
+
+		   container.html('<button class="close" onclick="searchResultsClose();">&times;</button>' + cards);
+
+		} catch (e) {
+			container.html('<button class="close" onclick="searchResultsClose();">&times;</button>' + 'No Results');   
+		}
+	});
+	$(".cont").slideUp('slow', function() {
+		$(".searchResultsWrap").slideDown('slow');	
+	});
+}
+function searchResultsClose() {
+	$(".searchResultsWrap").slideUp('slow', function() {
+		$(".cont").slideDown('slow');	
+		$(".search > input").val('');
+	});
+
+}

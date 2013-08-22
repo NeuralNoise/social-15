@@ -1,10 +1,4 @@
 <?php 
-$has_name = true;
-if (isset($u) ) {
-    if ($u->first_name == '' || $u->last_name == '') {
-        $has_name = false;
-    }
-}
 
 if (!isset($title) ) {
     $title = 'Social';
@@ -53,13 +47,16 @@ if (!isset($header) ) {
         <div class="cont container-fluid">
             <?php include $path; ?>
         </div>
+        <?php if (isset($u) ): ?>
+            <?php include 'views/search.view.php'; ?>
+        <?php endif ?>
         <?php if (!$has_name): ?>
             <?php include 'views/add_name.php'; ?>
         <?php endif ?>
         
         <footer>
         	<div id="version">
-             <p>Test Version #5</p>   
+             <p>Test Version #7</p>   
             </div>
         </footer>
         

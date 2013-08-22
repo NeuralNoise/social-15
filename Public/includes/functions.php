@@ -2,7 +2,9 @@
 
 function view($path, $data) {
 	extract($data);
-	extract($xView);
+    if (isset($xView)) {
+        extract($xView);   
+    }
 	$path = $path .'.view.php';
 	include "views/layout.php";
 }
@@ -23,6 +25,10 @@ function transliteration($string) {
         'Щ'=>'Sht', 'Ъ'=>'A', 'Ь'=>'Y', 'Ю'=>'Yu', 'Я'=>'Ya'
     );
     return strtr($string, $table);
+}
+
+function wild_card($str) {
+    return '%' . $str . '%';
 }
 
 function check_user() {
