@@ -479,3 +479,23 @@ footer {
     .searchResults .searchCard a {
       float: left;
       margin-left: 20px; }
+
+/*
+***********************
+** =Dependencies View
+***********************
+*/
+.dependencies a {
+  padding: 20px; }
+  .dependencies a img {
+    padding: 5px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s; }
+    .dependencies a img:hover {
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.8); }

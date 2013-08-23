@@ -9,7 +9,15 @@ if (isset($_GET['activation']) ) {
 
  } else if (isset($_SESSION['name']) && $_SESSION['pass']) {
 
-	if (isset($_GET['upload']) ) {
+	if (isset($_GET['dependencies']) ) {
+	 	secure('get');
+	 	require_once check_user();
+	 	if ($user_ok) {
+	 		require_once main_inc();
+	 		require_once controller('dependencies');
+	 	}
+	 	
+	 } else if (isset($_GET['upload']) ) {
 	 	secure('get');
 	 	require_once check_user();
 	 	if ($user_ok) {

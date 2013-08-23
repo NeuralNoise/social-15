@@ -15,6 +15,7 @@
 			<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="options" title="Options"></a>
 			<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 				<li><a href="./<?= $u->username . '/edit' ?>">Edit Profile</a></li>
+				<li><a href="./!dependencies">Dependencies</a></li>
 				<li><a href="./!logout">LogOut</a></li>
 			</ul>	
 		</div>

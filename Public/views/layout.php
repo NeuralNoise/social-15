@@ -1,4 +1,7 @@
 <?php 
+if (!isset($has_name) ) {
+    $has_name = true;
+}
 
 if (!isset($title) ) {
     $title = 'Social';

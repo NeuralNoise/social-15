@@ -6,7 +6,7 @@
         <label for="pass">Password</label>
         <input type="password" name="pass" id="pass" placeholder="Password" onfocus="emptyElement('logInStatus')">
     	<label for="remember">
-            Remember Me <button type="button" class="btn" data-toggle="button" id="remember" onclick="tick('remember');"><img src='img/tick-empty.png'></button>
+            Remember Me <button type="button" class="btn" data-toggle="button" id="remember" onclick="tick('remember');"><img src='img/tick-empty.png'  alt="R"></button>
     	</label>
         <br>
         <button id="logIn" onclick="log_in();" class="btn btn-primary-lighten">LogIn</button>&nbsp;&nbsp;<span id="logInStatus"></span>
