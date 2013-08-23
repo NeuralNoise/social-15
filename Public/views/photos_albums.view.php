@@ -1,10 +1,10 @@
 <div class="row-fluid">
-	<div class="span2 offset3">
+	<div class="span2 offset2">
 		<h2>Albums</h2>
 	</div>	
 </div>
 <div class="row-fluid">
-	<div class="span1 offset3">
+	<div class="span1 offset2">
 		<a href="<?= $_GET['user'] . '/photos/all' ?>">All</a>
 	</div>
 	<div class="span1">
@@ -17,7 +17,7 @@
 	<?php endif ?>	
 </div>
 <div class="row-fluid">
-	<div class="span6 offset3 albumsHolder">
+	<div class="span6 offset2 albumsHolder">
 		<?php foreach (photo_DAO::albums($u->username) as $album): ?>
 			<p><?= $album ?></p>
 		<?php endforeach ?>

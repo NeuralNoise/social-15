@@ -85,6 +85,9 @@ body {
 .cont, .searchResults {
   margin-top: 50px; }
 
+.cont {
+  margin-left: 120px; }
+
 .avatarMini {
   width: 50px;
   height: 50px; }
@@ -303,7 +306,7 @@ footer {
 ***********************
 */
 .photoView_photo-wrapper {
-  margin: 50px 0 20px 100px;
+  margin: 50px 0 20px 0;
   width: 1240px;
   position: relative;
   float: left; }

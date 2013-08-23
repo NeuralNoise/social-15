@@ -1,5 +1,5 @@
 <div class="row-fluid">
-  <div class="span2 offset1 sidebar">
+  <div class="span2 sidebar">
     <!--Sidebar content-->
     <div class="avatarBorder">
     <?php if ($avatar[0] !== 'i'): ?> <!-- If it's not the default picture include the link to the photo -->

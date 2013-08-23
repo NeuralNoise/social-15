@@ -57,7 +57,7 @@
 </div>
 <?php if ($my_photo): ?>
 	<div class="row">
-		<div class="span1 offset10">
+		<div class="span1 offset9">
 			<button class="btn btn-link" id="deletePic" onclick="deletePhoto();">Delete</button>
 		</div>
 		<div class="span2">

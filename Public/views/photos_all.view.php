@@ -1,10 +1,10 @@
 <div class="row-fluid">
-	<div class="span2 offset3">
+	<div class="span2 offset2">
 		<h2>All Photos</h2>
 	</div>	
 </div>
 <div class="row-fluid">
-	<div class="span1 offset3">
+	<div class="span1 offset2">
 		<a href="" class="muted" onclick="return false;">All</a>
 	</div>
 	<div class="span1">

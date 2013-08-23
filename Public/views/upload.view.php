@@ -1,5 +1,5 @@
 <div class="row-fluid">
-	<div class="span11 offset1 imgUpload-wrapper">
+	<div class="span11 imgUpload-wrapper">
 		<form method="post" onsubmit="return false;">
 			<label for="albumName">Album Name: </label>
 			<input type="text" name="albumName" id="albumName">

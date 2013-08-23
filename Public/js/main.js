@@ -225,11 +225,11 @@ function searchSubmit() {
 		   container.html('<button class="close" onclick="searchResultsClose();">&times;</button>' + cards);
 
 		} catch (e) {
-			container.html('<button class="close" onclick="searchResultsClose();">&times;</button>' + 'No Results');   
+		   container.html('<button class="close" onclick="searchResultsClose();">&times;</button>' + 'No Results');   
 		}
 	});
 	$(".cont").slideUp('slow', function() {
-		$(".searchResultsWrap").slideDown('slow');	
+		$(".searchResultsWrap").slideDown('slow');
 	});
 }
 function searchResultsClose() {

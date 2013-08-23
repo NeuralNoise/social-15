@@ -1,5 +1,5 @@
 <div class="row-fluid">
-	<div class="span2 offset1">
+	<div class="span2">
 	  <!--Sidebar content-->
 	  <div class="avatarBorder">
 	  		<img src="<?= $avatar ?>" alt="Avatar" class="avatar">

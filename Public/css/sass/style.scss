@@ -97,6 +97,9 @@ body {
   margin-top: 50px;
   // height: 900px;
 }
+.cont {
+  margin-left: 120px;
+}
 .avatarMini {
   width: 50px;
   height: 50px;
@@ -317,7 +320,6 @@ footer {
   left: 80%;
 }
 .sidebarButtons {
-  // margin-left: 48px;
   text-align: center;
   a {
     margin-bottom: 5px;
@@ -367,7 +369,7 @@ footer {
 ***********************
 */
 .photoView_photo-wrapper {
-  margin: 50px 0 20px 100px;
+  margin: 50px 0 20px 0;
   width: 1240px;
   position: relative;
   float: left;

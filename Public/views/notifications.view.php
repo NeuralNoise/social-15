@@ -1,4 +1,4 @@
-<div class="span8 offset4 allNotifications_wrap">
+<div class="span8 offset3 allNotifications_wrap">
 	<ul>
 		<?php foreach ($all_notifications as $notif): ?>
 			<li>
