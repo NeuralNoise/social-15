@@ -19,6 +19,9 @@ RewriteRule ^!dependencies/$ index.php?dependencies
 RewriteRule ^!upload$ index.php?upload
 RewriteRule ^!upload/$ index.php?upload
 
+RewriteRule ^upload/([a-zA-Z0-9_-]+)$ index.php?upload&album=$1
+RewriteRule ^upload/([a-zA-Z0-9_-]+)/$ index.php?upload&album=$1
+
 RewriteRule ^message/([a-zA-Z0-9_-]+)$ index.php?message=$1
 RewriteRule ^message/([a-zA-Z0-9_-]+)/$ index.php?message=$1
 
@@ -30,6 +33,9 @@ RewriteRule ^([a-zA-Z0-9_-]+)/photos/([a-zA-Z]+)/$ index.php?user=$1&photos=$2
 
 RewriteRule ^([a-zA-Z0-9_-]+)/notifications$ index.php?user=$1&notifications
 RewriteRule ^([a-zA-Z0-9_-]+)/notifications/$ index.php?user=$1&notifications
+
+RewriteRule ^([a-zA-Z0-9_-]+)/photos/album/([a-zA-Z0-9_-]+)$ index.php?user=$1&albumView=$2
+RewriteRule ^([a-zA-Z0-9_-]+)/photos/album/([a-zA-Z0-9_-]+)/$ index.php?user=$1&albumView=$2
 
 RewriteRule ^([a-zA-Z0-9_-]+)/photos/([a-zA-Z0-9_-]+)/([0-9]+)$ index.php?u=$1&album=$2&p_id=$3
 RewriteRule ^([a-zA-Z0-9_-]+)/photos/([a-zA-Z0-9_-]+)/([0-9]+)/$ index.php?u=$1&album=$2&p_id=$3

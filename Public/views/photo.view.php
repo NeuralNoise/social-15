@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row photoView">
 	<a onclick="clickArrow('<?= $this_user->username . '/photos/' . $_GET['album'] . '/' .  $p->dao->previous($_GET['p_id'], $_GET['album'])->p_id ?>')" class="chevronLeft"></a>
 	<h3 class="photoView_heading"><?= $title ?></h3>
 	<a onclick="clickArrow('<?= $this_user->username . '/photos/' . $_GET['album'] . '/' .  $p->dao->next($_GET['p_id'], $_GET['album'])->p_id ?>')" class="chevronRight"></a>

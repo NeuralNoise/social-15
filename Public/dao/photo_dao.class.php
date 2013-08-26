@@ -80,12 +80,17 @@ class photo_DAO
 	public static function albums($username) {
 		// SELECT * FROM photos WHERE owner = $this->username ORDER BY album GROUP BY album;
 		$options = array('conditions' => array('owner = ?', $username), 'order' => 'album', 'group' => 'album');
-		$albums = Photos::all($options);
-		$return = [];
-		foreach ($albums as $album) {
-			array_push($return, $album->album);
-		}
-		return $return;
+		return $albums = Photos::all($options);
+		// $return = [];
+		// foreach ($albums as $album) {
+		// 	array_push($return, $album->album);
+		// }
+		// return $return;
+	}
+
+	public static function album($owner, $album) {
+		$options = array('conditions' => array('owner = ? AND album = ?', $owner, $album), 'order' => 'p_id');
+		return Photos::all($options);
 	}
 
 	public function __get($property) {

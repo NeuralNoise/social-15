@@ -59,7 +59,7 @@ if (!isset($header) ) {
         
         <footer>
         	<div id="version">
-             <p>Test Version #7</p>   
+             <p>Test Version #8</p>   
             </div>
         </footer>
         

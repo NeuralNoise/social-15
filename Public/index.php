@@ -3,6 +3,7 @@
 require_once 'includes/social.php';
 session_start();
 
+
 if (isset($_GET['activation']) ) {
  	secure('get');
  	require_once parser('activation');
@@ -16,7 +17,7 @@ if (isset($_GET['activation']) ) {
 	 		require_once main_inc();
 	 		require_once controller('dependencies');
 	 	}
-	 	
+
 	 } else if (isset($_GET['upload']) ) {
 	 	secure('get');
 	 	require_once check_user();
@@ -74,6 +75,14 @@ if (isset($_GET['activation']) ) {
 	 	if ($user_ok) {
 	 		require_once main_inc();
 	 		require_once controller('edit');
+	 	}
+
+	} else if (isset($_GET['user']) && isset($_GET['albumView']) ) {
+		secure('get');
+		require_once check_user();
+	 	if ($user_ok) {
+	 		require_once main_inc();
+	 		require_once controller('album');
 	 	}
 
 	} else if (isset($_GET['user']) && isset($_GET['photos']) ) {

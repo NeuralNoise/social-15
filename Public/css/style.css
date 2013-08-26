@@ -305,6 +305,9 @@ footer {
 ** =Photo View
 ***********************
 */
+.photoView {
+  margin-left: -35px; }
+
 .photoView_photo-wrapper {
   margin: 50px 0 20px 0;
   width: 1240px;
@@ -428,6 +431,21 @@ footer {
   .allPhotos_photoWrapper #allPhotos_photo-w {
     max-width: none;
     max-height: 100%; }
+
+/*
+***********************
+** =All Albums View
+***********************
+*/
+.albumsHolder .allPhotos_photoWrapper {
+  text-align: center;
+  text-decoration: none;
+  height: 240px; }
+  .albumsHolder .allPhotos_photoWrapper p {
+    font-weight: bold;
+    color: #8209a1; }
+  .albumsHolder .allPhotos_photoWrapper:hover p {
+    color: #2f023a; }
 
 /*
 ***********************

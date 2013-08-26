@@ -10,7 +10,7 @@
 	<div class="span1">
 		<a href="<?= $_GET['user'] . '/photos/albums' ?>">Albums</a>
 	</div>
-	<?php if (empty($this_user) ): ?>
+	<?php if ($my): ?>
 		<div class="span2">
 			<a href="./!upload">Create Album</a>
 		</div>
@@ -18,32 +18,17 @@
 </div>
 <div class="row-fluid">
 	<div class="span8 offset2">
-		<?php if (empty($this_user) ): ?>
-			<?php foreach (photo_DAO::all_photos($u->username) as $photo): ?>
-				<?php 			
-					list($width,$height) = getimagesize($photo->path);
-					$class = 'allPhotos_photo-h';
-					if ($width > $height) {
-						$class = 'allPhotos_photo-w'; // !!!
-					}
-				?>
-				<a href="<?= $_GET['user'] . '/photos/all/' . $photo->p_id ?>" class="allPhotos_photoWrapper">
-					<img src="<?= $photo->path ?>" alt="photo" id="<?= $class ?>" class="allPhotos_photo">
-				</a>					
-			<?php endforeach ?>
-		<?php else: ?>
-			<?php foreach (photo_DAO::all_photos($this_user->username) as $photo): ?>
-				<?php 			
-					list($width,$height) = getimagesize($photo->path);
-					$class = 'allPhotos_photo-h';
-					if ($width > $height) {
-						$class = 'allPhotos_photo-w';
-					}
-				?>
-				<a href="<?= $_GET['user'] . '/photos/' . $photo->album . '/' . $photo->p_id ?>" class="allPhotos_photoWrapper">
-					<img src="<?= $photo->path ?>" alt="photo" id="<?= $class ?>" class="allPhotos_photo">
-				</a>
-			<?php endforeach ?>
-		<?php endif ?>
+		<?php foreach ($all_photos as $photo): ?>
+			<?php 			
+				list($width,$height) = getimagesize($photo->path);
+				$id = 'allPhotos_photo-h';
+				if ($width > $height) {
+					$id = 'allPhotos_photo-w';
+				}
+			?>
+			<a href="<?= $_GET['user'] . '/photos/all/' . $photo->p_id ?>" class="allPhotos_photoWrapper">
+				<img src="<?= $photo->path ?>" alt="photo" id="<?= $id ?>" class="allPhotos_photo">
+			</a>
+		<?php endforeach ?>
 	</div>
 </div>

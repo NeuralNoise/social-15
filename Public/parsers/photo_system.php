@@ -313,11 +313,11 @@ if (isset($_POST['makeProfile']) ) {
 if (isset($_POST['addDescription']) ) {
 	if (isset($_POST['many']) ) {
 		$data = $_POST['data'];
-		$arr = explode('//', $data);
+		$arr = explode('///', $data);
 		array_pop($arr);
 
 		foreach ($arr as $str) {
-			$a = explode(':', $str);
+			$a = explode('/:/', $str);
 			$p = Photos::find($a[0]);
 			$p->description = $a[1];
 			$p->save();
@@ -336,3 +336,26 @@ if (isset($_POST['addDescription']) ) {
 		echo 'success';die;
 	}	
 }
+
+/*
+***********************
+** =Remove Album
+***********************
+*/
+if (isset($_POST['removeAlbum']) ) {
+		extract($_POST);
+		if ($album !== 'profile_pictures') {
+			$options = array('conditions' => array('owner = ? AND album = ?', $user, $album));
+			$photos = Photos::all($options);
+			foreach ($photos as $photo) {
+				unlink($photo->path);
+				$photo->delete();
+			}
+		
+			rmdir('user_data/' . $user . '/photos/' . $album);
+			echo 'success';die;
+		}
+		
+}
+
+?>

@@ -94,7 +94,7 @@ function addDesc() {
     for (var i = 0; i < l; i++) {
         var input = inputs.eq(i);
         if (input.val() !== '') {
-            data += input.attr('name') + ':' + input.val() + '//';    
+            data += input.attr('name') + '/:/' + input.val() + '///';    
         }        
     }
     if (data !== '') {
@@ -102,6 +102,8 @@ function addDesc() {
             if (data == 'success') {
                 status.html('Success');
                 setTimeout(function(){location.assign('index.php')},700);
+            } else {
+                status.html(data);
             }
         });
     } else {
