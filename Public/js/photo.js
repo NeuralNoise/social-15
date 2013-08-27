@@ -99,6 +99,11 @@ function resizeTextArea() {
 	}
 }
 
+$(document).ready(function(){
+    $('.animated').autosize({append: "\n"});
+    $('.animated').blur();
+});
+
 function checkEnter(th) {
 	var th = $(th),
 		h = th.height();

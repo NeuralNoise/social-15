@@ -239,3 +239,20 @@ function searchResultsClose() {
 	});
 
 }
+
+/*
+***********************
+** =Likes
+***********************
+*/
+
+function like(app, on, type) {
+
+	$.post('index.php', {'ajax':1, 'parser':'like', 'type':type, 'on':on, 'app':app}, function(data) {
+		if (data == 'success') {
+			location.reload();
+		} else {
+			$("#status").html(data);
+		}
+	});
+}

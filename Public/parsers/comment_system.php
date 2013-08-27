@@ -39,7 +39,7 @@ if (isset($_POST['add_comment']) ) {
 	}
 
 	$full_name = person_DAO::get_full_name($owner);
-	$avatar = person_DAO::get_avatar($owner, $up);
+	$avatar = person_DAO::get_avatar($owner);
 	$avatar = strstr($avatar, 'u');
 	$now = strtotime($now);
 	$response = 

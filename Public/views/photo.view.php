@@ -20,17 +20,34 @@
 					<span data-livestamp="<?= strtotime($p->upload_date) ?>" class="liveStamp muted"></span>
 				</div>
 			</div>
+
 			<div class="description">
 				<?php if ($my_photo): ?>
 					<a href="" data-toggle="modal" data-target="#descriptionModal"><?= $p->description ?> <br><b> (Edit Description)</b></a>
 					<?php include 'views/description.php'; ?>
 				<?php else: ?>
 					<p><?= $p->description ?></p>	
-				<?php endif ?>
-				
+				<?php endif ?>				
 			</div>
+
+			<div class="photoLikes">
+				<?php if ($likes_count > 0): ?>
+					<?php if ($likes_count === 1): ?>
+						<p><a href="./<?= $likes[0]->owner ?>"><?= person_DAO::get_full_name($likes[0]->owner) ?> </a> likes this.</p>	
+					<?php else: ?>
+						<p><a href=""><span id="numLikes"><?= $likes_count ?></span> people</a> like this.</p>
+					<?php endif ?>
+				<?php endif ?>
+			</div>
+
+			<?php if ($like_it): ?>
+				<a href="" onclick=" like('photo', '<?= $p->p_id ?>', 'unlike'); return false;"><small>Unlike</small></a>
+			<?php else: ?>
+				<a href="" onclick=" like('photo', '<?= $p->p_id ?>', 'like'); return false;"><small>Like</small></a>
+			<?php endif ?>
+			
 			<div class="addComment">
-				<textarea class="addComment-input" onkeydown="resizeTextArea(); checkEnter(this);" placeholder="Add a Comment"></textarea>
+				<textarea class="addComment-input animated" placeholder="Add a Comment"></textarea>
 				<br>
 				<button onclick="addComment('<?= $this_user->username . "', " . $p->p_id ?>, 'photo', '#commentsWrap > .mCustomScrollBox > .mCSB_container');" class="btn btn-small" id="addCommentButton">Post</button>					
 			</div>
@@ -48,6 +65,18 @@
 							<p><?= $body ?></p>
 						</div>
 						<span data-livestamp="<?= strtotime($date) ?>" class="liveStamp muted"></span>
+						<?php if ($like_comment): ?>
+							<a href="" onclick=" like('comment', '<?= $comment_id ?>', 'unlike'); return false;"><small>Unlike</small></a>
+						<?php else: ?>
+							<a href="" onclick=" like('comment', '<?= $comment_id ?>', 'like'); return false;"><small>Like</small></a>
+						<?php endif ?>
+						<?php if ($likes_count_comment > 0): ?>
+							<?php if ($likes_count_comment === 1): ?> <!-- AJAX -->
+								<p><small><a href="./<?= $comment_likes[0]->owner ?>"><?= person_DAO::get_full_name($comment_likes[0]->owner) ?> </a> likes this.</small></p>	
+							<?php else: ?>
+								<p><small><a href=""><span id="numLikes"><?= $likes_count_comment ?></span> people</a> like this.</small></p>
+							<?php endif ?>
+						<?php endif ?>
 					</li>
 				<?php endforeach ?>
 			</ul>
