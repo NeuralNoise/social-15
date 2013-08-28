@@ -1,7 +1,7 @@
 <div class="row photoView">
-	<a onclick="clickArrow('<?= $this_user->username . '/photos/' . $_GET['album'] . '/' .  $p->dao->previous($_GET['p_id'], $_GET['album'])->p_id ?>')" class="chevronLeft"></a>
+	<a onclick="clickArrow('<?= BASE_DIR . $this_user->username . '/photos/' . $_GET['album'] . '/' .  $p->dao->previous($_GET['p_id'], $_GET['album'])->p_id ?>')" class="chevronLeft"></a>
 	<h3 class="photoView_heading"><?= $title ?></h3>
-	<a onclick="clickArrow('<?= $this_user->username . '/photos/' . $_GET['album'] . '/' .  $p->dao->next($_GET['p_id'], $_GET['album'])->p_id ?>')" class="chevronRight"></a>
+	<a onclick="clickArrow('<?= BASE_DIR . $this_user->username . '/photos/' . $_GET['album'] . '/' .  $p->dao->next($_GET['p_id'], $_GET['album'])->p_id ?>')" class="chevronRight"></a>
 	<div class="photoView_photo-wrapper">
 		<div class="photoView_photo-holder">
 			<?php if ($p->width >= $p->height): ?>
@@ -35,7 +35,7 @@
 					<?php if ($likes_count === 1): ?>
 						<p><a href="./<?= $likes[0]->owner ?>"><?= person_DAO::get_full_name($likes[0]->owner) ?> </a> likes this.</p>	
 					<?php else: ?>
-						<p><a href=""><span id="numLikes"><?= $likes_count ?></span> people</a> like this.</p>
+						<p><a href="" onclick="getLikers('<?= $p->p_id ?>', 'photo'); return false; "><span id="numLikes"><?= $likes_count ?></span> people</a> like this.</p>
 					<?php endif ?>
 				<?php endif ?>
 			</div>
@@ -53,7 +53,7 @@
 			</div>
 			<ul id="commentsWrap">
 				<?php foreach ($comments_ar as $comment): ?>
-				<?php extract($comment) ?>
+				<?php extract($comment); ?>
 					<li>
 						<div class="photoComment_Avatar">
 							<a href="./<?= $username ?>">
@@ -74,7 +74,7 @@
 							<?php if ($likes_count_comment === 1): ?> <!-- AJAX -->
 								<p><small><a href="./<?= $comment_likes[0]->owner ?>"><?= person_DAO::get_full_name($comment_likes[0]->owner) ?> </a> likes this.</small></p>	
 							<?php else: ?>
-								<p><small><a href=""><span id="numLikes"><?= $likes_count_comment ?></span> people</a> like this.</small></p>
+								<p><small><a href="" onclick="getLikers('<?= $comment_id ?>', 'comment'); return false;"><span id="numLikes"><?= $likes_count_comment ?></span> people</a> like this.</small></p>
 							<?php endif ?>
 						<?php endif ?>
 					</li>

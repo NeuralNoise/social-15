@@ -212,7 +212,6 @@ function searchSubmit() {
 		   var json = $.parseJSON(data),
 		   	   cards = '',
 		   	   l = json.length;
-		   console.log(json);
 		   for (var i = 0; i < l; i++) {
 			    cards += "<div class='searchCard'>"+
 							"<a href='./"+ json[i].username +"'><img src='"+ json[i].avatar +"' alt='avatar'></a>"+
@@ -254,5 +253,31 @@ function like(app, on, type) {
 		} else {
 			$("#status").html(data);
 		}
+	});
+}
+
+function getLikers(on, app) {
+	$.post('index.php', {'ajax':1, 'parser':'like', 'type':'getLikers', 'on':on, 'app':app}, function(data) {
+		try {
+			var json = $.parseJSON(data),
+		   	   cards = '',
+		   	   l = json.length,
+		   	   modal = document.createElement("DIV");
+		   	modal = $(modal);
+		   	modal.addClass('modal hide fade likeModal');   
+		   for (var i = 0; i < l; i++) {
+			    cards += "<div class='likeCard'>"+
+							"<a href='./"+ json[i].username +"'><img src='"+ json[i].avatar +"' alt='avatar'></a>"+
+							"<div class='likeCardInfo'>"+
+								"<a href='./"+ json[i].username +"'>"+ json[i].full_name +"</a>"+
+							"</div>"+
+						  "</div>";
+		   }
+		   modal.append('<div class="modal-header"><button class="close" data-dismiss="modal">&times;</button><h3>People Who Like This</h3></div>');
+		   modal.append("<div class='modal-body'>"+ cards +"</div>")
+		   modal.modal("toggle");
+		} catch (e) {
+			$("#status").html(data);	
+		}	
 	});
 }

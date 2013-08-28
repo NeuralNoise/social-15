@@ -34,10 +34,12 @@ foreach ($comments as $comment) {
 
 	$like_comment = false;
 	$options = array('conditions' => array('owner = ? AND app = "comment" AND on_id = ?', $u->username, $comment->comment_id));
-	$comment_likes = Likes::all($options);
-	if ($comment_likes) {
+	$me_comment_likes = Likes::all($options);
+	if ($me_comment_likes) {
 		$like_comment = true;
 	}
+	$options = array('conditions' => array('app = "comment" AND on_id = ?', $comment->comment_id));
+	$comment_likes = Likes::all($options);
 	$count = count($comment_likes);
 	$arr = array(
 		'comment_id' => $comment->comment_id,

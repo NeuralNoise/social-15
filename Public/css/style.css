@@ -79,6 +79,30 @@ body {
 ** =Miscellaneous
 ***********************
 */
+.likeModal .likeCard {
+  padding: 10px;
+  overflow: hidden;
+  margin: auto; }
+  .likeModal .likeCard img {
+    width: 50px;
+    height: 50px;
+    float: left; }
+  .likeModal .likeCard a {
+    float: left;
+    margin-left: 10px; }
+
+.searchCard {
+  padding: 20px;
+  overflow: hidden;
+  margin: auto; }
+  .searchCard img {
+    width: 100px;
+    height: 100px;
+    float: left; }
+  .searchCard a {
+    float: left;
+    margin-left: 20px; }
+
 .animated {
   -webkit-transition: height 0.2s;
   -moz-transition: height 0.2s;
