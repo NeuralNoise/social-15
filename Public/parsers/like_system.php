@@ -9,10 +9,21 @@ if ($type === 'like') {
 		'date' => now()
 		));
 	if (strcmp($user, $u->username) !== 0) {
+		$message = $u->full_name . ' likes your ' . $app . '.';
+		if ($app == 'comment') {
+			$comment = Comments::find($on);
+			$l = strlen($comment->body);
+			if ($l > 20) {
+				$message = $u->full_name . ' likes your comment: ' . substr($comment->body, 0, 20) . '...';	
+			} else {
+				$message = $u->full_name . ' likes your comment: ' . $comment->body;
+			}
+			
+		}
 		Notifications::create(array(
 			'username' => $user,
 			'initiator' => $u->username,
-			'message' => $u->full_name . ' likes your ' . $app . '.',
+			'message' => $message,
 			'app' => $app,
 			'on_id' => $on,
 			'path' => $path,
