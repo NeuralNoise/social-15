@@ -10,7 +10,7 @@ if (isset($_POST['add_comment']) ) {
 
 	$commenters = $c->dao->commenters();
 	foreach ($commenters as $commenter) {
-		if (strcmp($commenter->owner, $owner) && strcmp($commenter->owner, $user) ) {
+		if (strcmp($commenter->owner, $owner) !== 0 && strcmp($commenter->owner, $user) !== 0 ) {
 			Notifications::create(array(
 				'username' => $commenter->owner,
 				'initiator' => $owner,

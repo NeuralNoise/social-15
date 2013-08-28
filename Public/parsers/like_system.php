@@ -8,6 +8,18 @@ if ($type === 'like') {
 		'on_id' => $on,
 		'date' => now()
 		));
+	if (strcmp($user, $u->username) !== 0) {
+		Notifications::create(array(
+			'username' => $user,
+			'initiator' => $u->username,
+			'message' => $u->full_name . ' likes your ' . $app . '.',
+			'app' => $app,
+			'on_id' => $on,
+			'path' => $path,
+			'date' => now()
+			));
+	}
+	
 	echo 'success';die;
 }
 

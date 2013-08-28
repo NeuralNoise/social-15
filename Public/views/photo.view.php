@@ -43,7 +43,7 @@
 			<?php if ($like_it): ?>
 				<a href="" onclick=" like('photo', '<?= $p->p_id ?>', 'unlike'); return false;"><small>Unlike</small></a>
 			<?php else: ?>
-				<a href="" onclick=" like('photo', '<?= $p->p_id ?>', 'like'); return false;"><small>Like</small></a>
+				<a href="" onclick=" like('photo', '<?= $p->p_id ?>', 'like', '<?= $this_user->username ?>'); return false;"><small>Like</small></a>
 			<?php endif ?>
 			
 			<div class="addComment">
@@ -68,10 +68,10 @@
 						<?php if ($like_comment): ?>
 							<a href="" onclick=" like('comment', '<?= $comment_id ?>', 'unlike'); return false;"><small>Unlike</small></a>
 						<?php else: ?>
-							<a href="" onclick=" like('comment', '<?= $comment_id ?>', 'like'); return false;"><small>Like</small></a>
+							<a href="" onclick=" like('comment', '<?= $comment_id ?>', 'like', '<?= $username ?>'); return false;"><small>Like</small></a>
 						<?php endif ?>
 						<?php if ($likes_count_comment > 0): ?>
-							<?php if ($likes_count_comment === 1): ?> <!-- AJAX -->
+							<?php if ($likes_count_comment === 1): ?>
 								<p><small><a href="./<?= $comment_likes[0]->owner ?>"><?= person_DAO::get_full_name($comment_likes[0]->owner) ?> </a> likes this.</small></p>	
 							<?php else: ?>
 								<p><small><a href="" onclick="getLikers('<?= $comment_id ?>', 'comment'); return false;"><span id="numLikes"><?= $likes_count_comment ?></span> people</a> like this.</small></p>

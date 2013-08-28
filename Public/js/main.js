@@ -245,9 +245,9 @@ function searchResultsClose() {
 ***********************
 */
 
-function like(app, on, type) {
-
-	$.post('index.php', {'ajax':1, 'parser':'like', 'type':type, 'on':on, 'app':app}, function(data) {
+function like(app, on, type, user) {
+	var path = path = $(location).attr('href');
+	$.post('index.php', {'ajax':1, 'parser':'like', 'type':type, 'on':on, 'app':app, 'user':user, 'path':path}, function(data) {
 		if (data == 'success') {
 			location.reload();
 		} else {

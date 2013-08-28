@@ -89,7 +89,7 @@ $script_t = '<script>
 					h   = img.height(); 
 					w   = img.width(); 
 					$(".photoView_comments").height(h);
-					$("#commentsWrap").height(h - 140);
+					$("#commentsWrap").height(h - 260);
 				}
 			</script>
   			 <script src="js/jquery.Jcrop.min.js"></script>
