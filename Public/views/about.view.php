@@ -2,13 +2,9 @@
 	<div class="span2">
     <!--Sidebar content-->
 	    <div class="avatarBorder">
-	    <?php if ($avatar[0] !== 'i'): ?>
-	      <a href="<?= $this_user->username . '/photos/profile_pictures/' .  $this_user->avatar_id ?>">
-	    <?php endif ?>
+	      <a href="./<?= $this_user->username ?>">
 	        <img src="<?= $avatar ?>" alt="Avatar" class="avatar">
-	    <?php if ($avatar[0] !== 'i'): ?>
 	      </a>
-	    <?php endif ?>     	
 	    </div>
   	</div> <!-- End Sidebar -->
   	<div class="span8">

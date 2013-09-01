@@ -1,5 +1,6 @@
 <?php extract($notifications) ?>
 <header data-username="<?= $u->username ?>">
+	<a href="./<?= $u->username ?>" class="avatarHeaderWrap"><img src="<?= $my_avatar ?>" alt="avatar" class="avatarHeader"> <b><?= $u->full_name ?></b></a>
 	<div class="logo">
 		<a href=".">
 			<img src="img/logo.png" alt="Logo">

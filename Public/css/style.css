@@ -143,6 +143,22 @@ header {
   height: 45px;
   background: url(../img/header-background.png); }
 
+.avatarHeaderWrap {
+  color: #dddbde;
+  padding: 2px 4px 2px 1px;
+  position: absolute;
+  left: 99px;
+  margin-top: 3px;
+  border-radius: 10px; }
+  .avatarHeaderWrap:hover {
+    background: rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+    color: white; }
+  .avatarHeaderWrap .avatarHeader {
+    width: 35px;
+    height: 35px;
+    border-radius: 7px; }
+
 .logo {
   margin-left: 2px;
   position: absolute;
@@ -151,7 +167,7 @@ header {
 .search {
   position: absolute;
   top: 7px;
-  left: 200px; }
+  left: 345px; }
   .search #submitSearch {
     cursor: pointer;
     margin-left: -21px;
@@ -173,7 +189,8 @@ header {
 
 .notificationsWrap {
   position: absolute;
-  margin: 7px 0 0 135px; }
+  left: 545px;
+  margin-top: 7px; }
   .notificationsWrap .notificationsDropdown {
     max-height: 520px;
     overflow: auto; }

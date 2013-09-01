@@ -71,12 +71,6 @@ function replace_space($haystack) {
     return str_replace(' ', '_', $haystack);
 }
 
-// function get_avatar($user, $up = '') {
-//     @$avatar = glob($up . "user_data/" . $user . '/avatar/avatar.*')[0];
-    
-//     return $avatar;
-// }
-
 function hash_val($str) {
 	return hash('sha256','∅ÏÄ∫' . $str . 'Ω¹ú');
 }

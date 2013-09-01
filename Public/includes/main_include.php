@@ -25,5 +25,7 @@ $notifications = array('notif_new' => $u->dao->check_notif(), 'notif_top' => $u-
 ** =All Views Data
 ***********************
 */
-$xView = array('notifications' => $notifications, 'local' => $local, 'u' => $u, 'has_name' => $has_name);
+$my_avatar = person_DAO::get_avatar($u->username);
+
+$xView = array('notifications' => $notifications, 'local' => $local, 'u' => $u, 'has_name' => $has_name, 'my_avatar' => $my_avatar);
 ?>
