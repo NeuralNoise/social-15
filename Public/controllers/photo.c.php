@@ -85,14 +85,15 @@ $script_b = "<script src='js/photo.js'></script>
 			";
 $script_t = '<script>
 				function onImgLoad() {
-					img = $(".photoView_photo"); 
-					h   = img.height(); 
-					w   = img.width(); 
+					var img = $(".photoView_photo"),
+						h   = img.height(),
+						w   = img.width(),
+						c   = $(".beforeComments").height() + 30;
 					$(".photoView_comments").height(h);
-					$("#commentsWrap").height(h - 260);
+					$("#commentsWrap").height(h - c);
 				}
 			</script>
-  			 <script src="js/jquery.Jcrop.min.js"></script>
+  			<script src="js/jquery.Jcrop.min.js"></script>
   			 ';
 $style = '<link rel="stylesheet" href="css/jquery.Jcrop.min.css">';
 

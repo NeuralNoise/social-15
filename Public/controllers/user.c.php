@@ -31,10 +31,16 @@ $waiting = Friends::all($cond);
 ** =View
 ***********************
 */
+$about = false;
+if (isset($_GET['about']) ) {
+	$about = true;
+}
 $title = $this_user->username;
 if ($this_user->first_name !== null && $this_user->last_name !== null ) {
 	$title =  $this_user->full_name;
 }
+
+$birthday = date('F j, Y', strtotime($this_user->birth_date));
 
 $avatar = person_DAO::get_avatar($this_user->username);
 
@@ -44,6 +50,14 @@ if (!empty($blocked_me)) {
 	'this_user' => $this_user,
 	'title' => mb_convert_case($title, MB_CASE_TITLE, "UTF-8"),
 	'xView' => $xView
+	));
+} else if ($about && !empty($friends)) {
+	view('views/about', array(
+	'xView' => $xView,
+	'title' => $title,
+	'this_user' => $this_user,
+	'avatar' => $avatar,
+	'birthday' => $birthday
 	));
 } else if (!empty($friends) ) {
 	view("views/user_friends", array(

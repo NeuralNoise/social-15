@@ -302,7 +302,7 @@ footer {
 
 .sidebarButtons {
   text-align: center; }
-  .sidebarButtons a {
+  .sidebarButtons * {
     margin-bottom: 5px; }
 
 /*
@@ -549,3 +549,22 @@ footer {
     transition: all 1s; }
     .dependencies a img:hover {
       box-shadow: 0 0 40px rgba(0, 0, 0, 0.8); }
+
+/*
+***********************
+** =About View
+***********************
+*/
+.aboutCard {
+  margin: 10px 0;
+  padding: 5px;
+  text-align: center;
+  border-radius: 10px;
+  cursor: default;
+  -webkit-transition: all .4s;
+  -moz-transition: all .4s;
+  -ms-transition: all .4s;
+  -o-transition: all .4s;
+  transition: all .4s; }
+  .aboutCard:hover {
+    box-shadow: 0 0 10px #2f023a; }

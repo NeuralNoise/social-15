@@ -1,5 +1,6 @@
 <?php 
- 
+
+mb_internal_encoding("UTF-8");
 require_once 'includes/social.php';
 session_start();
 
@@ -51,6 +52,14 @@ if (isset($_GET['activation']) ) {
 		if ($user_ok) {
 			require_once main_inc();
 			require_once parser($_POST['parser']);
+		}
+
+	} else if (isset($_GET['user']) && isset($_GET['about']) ) {
+		secure('get');
+		require_once check_user();
+		if ($user_ok) {
+			require_once main_inc();
+			require_once controller('user');
 		}
 
 	} else if (isset($_GET['user']) && isset($_GET['notifications']) ) {

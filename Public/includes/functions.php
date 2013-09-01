@@ -9,6 +9,13 @@ function view($path, $data) {
 	include "views/layout.php";
 }
 
+function dd($var) { // dump & die
+    echo '<pre>';
+    var_dump($var);
+    echo '</pre>';
+    die;
+}
+
 function transliteration($string) {
     $table = array(
         'а'=>'a', 'б'=>'b', 'в'=>'v', 'г'=>'g', 'д'=>'d',
