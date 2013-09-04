@@ -200,8 +200,9 @@ header {
   left: 345px;
   #submitSearch {
     cursor: pointer;
-    margin-left: -21px;
-    padding-right: 3px;
+    position: absolute;
+    left: 160px;
+    top: 7px;
   }
 }
 .optionsWrap {
