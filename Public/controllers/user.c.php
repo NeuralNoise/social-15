@@ -26,6 +26,31 @@ $pending = Friends::all($cond);
 
 $cond = array('conditions' => array('user2 = ? AND user1 = ? AND accepted="0"', $u->username, $this_user->username) );
 $waiting = Friends::all($cond);
+
+/*
+***********************
+** =Wallposts
+***********************
+*/
+$options = array('conditions' => array('on_user = ?', $this_user->username));
+$w = Wallposts::all($options);
+$wallposts = [];
+foreach ($w as $wallpost) {
+	$options = array('conditions' => array('on_ = ? AND app = "wallpost"', $wallpost->w_id));
+	$comment_count = Comments::count($options);
+	$avatar = person_DAO::get_avatar($wallpost->from_user);
+	$full_name = person_DAO::get_full_name($wallpost->from_user);
+	$arr = array(
+		'full_name' => $full_name,
+		'username' => $wallpost->from_user,
+		'avatar' => $avatar,
+		'body' => $wallpost->body,
+		'date' => $wallpost->date
+		);
+	array_push($wallposts, $arr);
+}
+
+
 /*
 ***********************
 ** =View
@@ -65,7 +90,8 @@ if (!empty($blocked_me)) {
 	'title' => mb_convert_case($title, MB_CASE_TITLE, "UTF-8"),
 	'avatar' => $avatar,
 	'script_bottom' => $script,
-	'xView' => $xView
+	'xView' => $xView,
+	'wallposts' => $wallposts
 	));
 } else {
 	view("views/user", array(

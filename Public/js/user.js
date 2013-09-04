@@ -89,3 +89,23 @@ function unblock(blockee) {
 		});
 	}
 }
+
+/*
+***********************
+** =Write On Wall
+***********************
+*/
+
+function postToWall() {
+	var input = $(".writeOnWall > form > input[type='text'");
+	
+}
+
+$(".writeOnWall > form > input[type='text'").on('focus', function () {
+	var input = $(this);
+	input.height(50);
+});
+$(".writeOnWall > form > input[type='text'").on('blur', function () {
+	var input = $(this);
+	input.height(30);
+});

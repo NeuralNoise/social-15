@@ -38,7 +38,6 @@ class comment_DAO
 		return Comments::all($options);
 	}
 
-
 	public function __get($property) {
 		if (property_exists($this->c, $property) ) {
 			return $this->c->$property;

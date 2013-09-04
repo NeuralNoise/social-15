@@ -4,7 +4,6 @@ mb_internal_encoding("UTF-8");
 require_once 'includes/social.php';
 session_start();
 
-
 if (isset($_GET['activation']) ) {
  	secure('get');
  	require_once parser('activation');
