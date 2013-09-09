@@ -37,11 +37,14 @@ RewriteRule ^([a-zA-Z0-9_-]+)/notifications/$ index.php?user=$1&notifications
 RewriteRule ^([a-zA-Z0-9_-]+)/about$ index.php?user=$1&about
 RewriteRule ^([a-zA-Z0-9_-]+)/about/$ index.php?user=$1&about
 
-RewriteRule ^([a-zA-Z0-9_-]+)/photos/album/([a-zA-Z0-9_-]+)$ index.php?user=$1&albumView=$2
-RewriteRule ^([a-zA-Z0-9_-]+)/photos/album/([a-zA-Z0-9_-]+)/$ index.php?user=$1&albumView=$2
+RewriteRule ^([a-zA-Z0-9_-]+)/post/([0-9]+)$ index.php?user=$1&post=$2
+RewriteRule ^([a-zA-Z0-9_-]+)/post/([0-9]+)/$ index.php?user=$1&post=$2
 
-RewriteRule ^([a-zA-Z0-9_-]+)/photos/([a-zA-Z0-9_-]+)/([0-9]+)$ index.php?u=$1&album=$2&p_id=$3
-RewriteRule ^([a-zA-Z0-9_-]+)/photos/([a-zA-Z0-9_-]+)/([0-9]+)/$ index.php?u=$1&album=$2&p_id=$3
+RewriteRule ^([a-zA-Z0-9_-]+)/photos/album/(.+)$ index.php?user=$1&albumView=$2
+RewriteRule ^([a-zA-Z0-9_-]+)/photos/album/(.+)/$ index.php?user=$1&albumView=$2
+
+RewriteRule ^([a-zA-Z0-9_-]+)/photos/(.+)/([0-9]+)$ index.php?u=$1&album=$2&p_id=$3
+RewriteRule ^([a-zA-Z0-9_-]+)/photos/(.+)/([0-9]+)/$ index.php?u=$1&album=$2&p_id=$3
 
 RewriteRule ^activation/([a-zA-Z0-9_-]+)/([A-Za-z0-9_-\s\.\@]+)/([a-zA-Z0-9_-]+)$ index.php?activation=1&name=$1&email=$2&pass=$3
 RewriteRule ^activation/([a-zA-Z0-9_-]+)/([A-Za-z0-9_-\s\.\@]+)/([a-zA-Z0-9_-]+)/$ index.php?activation=1&name=$1&email=$2&pass=$3

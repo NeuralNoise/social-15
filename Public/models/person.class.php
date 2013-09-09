@@ -63,7 +63,7 @@ class person
 		if (!empty($this->avatar_id) ) {
 			$this->avatar = Photos::find($this->avatar_id)->path;
 		} else {
-			$this->avatar = '.';
+			$this->avatar = 'img/default_avatar.jpg';
 		}
 		$this->question = $this->useroptions->question;
 		$this->answer = $this->useroptions->answer;

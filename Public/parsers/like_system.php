@@ -17,8 +17,7 @@ if ($type === 'like') {
 				$message = $u->full_name . ' likes your comment: ' . substr($comment->body, 0, 20) . '...';	
 			} else {
 				$message = $u->full_name . ' likes your comment: ' . $comment->body;
-			}
-			
+			}			
 		}
 		Notifications::create(array(
 			'username' => $user,

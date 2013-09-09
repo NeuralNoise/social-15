@@ -17,7 +17,8 @@ if (isset($_GET['album']) ) {
 view('views/upload', array(
 	'xView' => $xView,
 	'script_bottom' => $script_b,
-	'album' => $album
+	'album' => $album,
+	'title' => 'Upload Photos'
 	));
 
 ?>

@@ -29,31 +29,8 @@ if (strcasecmp($_GET['u'], $u->username) !== 0) {
 ***********************
 */
 $comments = comment_DAO::fetch_all($p->p_id, 'photo');
-$comments_ar = array();
-foreach ($comments as $comment) {
+$comments_ar = comment_DAO::prepare_for_view($comments, $u);
 
-	$like_comment = false;
-	$options = array('conditions' => array('owner = ? AND app = "comment" AND on_id = ?', $u->username, $comment->comment_id));
-	$me_comment_likes = Likes::all($options);
-	if ($me_comment_likes) {
-		$like_comment = true;
-	}
-	$options = array('conditions' => array('app = "comment" AND on_id = ?', $comment->comment_id));
-	$comment_likes = Likes::all($options);
-	$count = count($comment_likes);
-	$arr = array(
-		'comment_id' => $comment->comment_id,
-		'username' => $comment->owner,
-		'avatar' => person_DAO::get_avatar($comment->owner),
-		'name' => person_DAO::get_full_name($comment->owner),
-		'body' => $comment->body,
-		'date' => $comment->date,
-		'like_comment' => $like_comment,
-		'likes_count_comment' => $count,
-		'comment_likes' => $comment_likes
-		);
-	array_push($comments_ar, $arr);
-}
 /*
 ***********************
 ** =Likes

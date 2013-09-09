@@ -45,13 +45,13 @@ if (isset($_POST['add_comment']) ) {
 	$response = 
 <<<EOF
 <li>
-	<div class="photoComment_Avatar">
+	<div class="comment_Avatar">
 		<a href="./ $owner ">
 			<img src=" $avatar " alt="Avatar">
 		</a>
 	</div>
-	<h6 class="photoComment_fullName"><a href="./$owner"> $full_name </a></h6>
-	<div class="photoComment_Body">
+	<h6 class="comment_fullName"><a href="./$owner"> $full_name </a></h6>
+	<div class="comment_Body">
 		<p> $body </p>
 	</div>
 	<span data-livestamp="$now" class="liveStamp muted"></span>

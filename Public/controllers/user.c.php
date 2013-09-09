@@ -32,24 +32,97 @@ $waiting = Friends::all($cond);
 ** =Wallposts
 ***********************
 */
-$options = array('conditions' => array('on_user = ?', $this_user->username));
-$w = Wallposts::all($options);
-$wallposts = [];
-foreach ($w as $wallpost) {
-	$options = array('conditions' => array('on_ = ? AND app = "wallpost"', $wallpost->w_id));
-	$comment_count = Comments::count($options);
+if (empty($_GET['post']) && empty($_GET['about']) ) {
+	$options = array('conditions' => array('on_user = ?', $this_user->username), 'order' => 'date desc');
+	$w = Wallposts::all($options);
+	$wallposts = [];
+	foreach ($w as $wallpost) {
+		// comments
+		$options = array('conditions' => array('on_ = ? AND app = "wallpost"', $wallpost->w_id));
+		$comments_count_int = Comments::count($options);
+		$comments_count = '';
+		if ($comments_count_int) {
+			$comments_count = ' (' . $comments_count_int . ')';
+		} else {
+			$comments_count = '';
+		}
+		$options = array('conditions' => array('on_ = ? AND app = "wallpost" ', $wallpost->w_id), 'order' => 'date desc', 'limit' => 5);
+		$comments = Comments::all($options);
+		$comments_ar = comment_DAO::prepare_for_view($comments, $u);
+
+		// likes
+		$options = array('conditions' => array('app = "wallpost" AND on_id = ?', $wallpost->w_id));
+		$likes = Likes::all($options);
+		$likes_count = count($likes);
+		$like_it = false;
+		if ($likes) { 
+			if (Likes::all(array('conditions' => array('owner = ? AND on_id = ? AND app = "wallpost"', $u->username, $wallpost->w_id)))) {
+				$like_it = true;
+			}
+		}
+		
+		$avatar = person_DAO::get_avatar($wallpost->from_user);
+		$full_name = person_DAO::get_full_name($wallpost->from_user);
+		$arr = array(
+			'full_name' => $full_name,
+			'username' => $wallpost->from_user,
+			'avatar' => $avatar,
+			'body' => $wallpost->body,
+			'date' => $wallpost->date,
+			'comments_count' => $comments_count,
+			'comments_count_int' => $comments_count_int,
+			'likes' => $likes,
+			'likes_count' => $likes_count,
+			'like_it' => $like_it,
+			'w_id' => $wallpost->w_id,
+			'comments_ar' => $comments_ar
+			);
+		array_push($wallposts, $arr);
+	}	
+}
+
+
+/*
+***********************
+** =Single Post View
+***********************
+*/
+$post = false;
+$wallpost = array();
+if (isset($_GET['post']) ) {
+	$post = true;
+	$wallpost = Wallposts::find($_GET['post']);
+	
+	$options = array('conditions' => array('on_ = ? AND app = "wallpost" ', $wallpost->w_id), 'order' => 'date desc');
+	$comments = Comments::all($options);
+	$comments_ar = comment_DAO::prepare_for_view($comments, $u);
+
+	// likes
+	$options = array('conditions' => array('app = "wallpost" AND on_id = ?', $wallpost->w_id));
+	$likes = Likes::all($options);
+	$likes_count = count($likes);
+	$like_it = false;
+	if ($likes) { 
+		if (Likes::all(array('conditions' => array('owner = ? AND on_id = ? AND app = "wallpost"', $u->username, $wallpost->w_id)))) {
+			$like_it = true;
+		}
+	}
+	
 	$avatar = person_DAO::get_avatar($wallpost->from_user);
 	$full_name = person_DAO::get_full_name($wallpost->from_user);
-	$arr = array(
+	$wallpost = array(
 		'full_name' => $full_name,
 		'username' => $wallpost->from_user,
 		'avatar' => $avatar,
 		'body' => $wallpost->body,
-		'date' => $wallpost->date
+		'date' => $wallpost->date,
+		'likes' => $likes,
+		'likes_count' => $likes_count,
+		'like_it' => $like_it,
+		'w_id' => $wallpost->w_id,
+		'comments_ar' => $comments_ar
 		);
-	array_push($wallposts, $arr);
 }
-
 
 /*
 ***********************
@@ -69,7 +142,7 @@ $birthday = date('F j, Y', strtotime($this_user->birth_date));
 
 $avatar = person_DAO::get_avatar($this_user->username);
 
-$script = "<script src='js/user.js'></script>";
+$script = "<script src='js/user.js'></script> <script src='js/jquery.autosize.min.js'></script>";
 if (!empty($blocked_me)) {
 	view("views/user_blocked", array(
 	'this_user' => $this_user,
@@ -83,6 +156,14 @@ if (!empty($blocked_me)) {
 	'this_user' => $this_user,
 	'avatar' => $avatar,
 	'birthday' => $birthday
+	));
+} else if ($post && !empty($friends)) {
+	view('views/wallpost', array(
+	'xView' => $xView,
+	'title' => $title,
+	'this_user' => $this_user,
+	'wallpost' => $wallpost,
+	'this_user' => $this_user
 	));
 } else if (!empty($friends) ) {
 	view("views/user_friends", array(

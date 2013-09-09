@@ -11,7 +11,7 @@ require_once 'dependencies/phpimageworkshop/ImageWorkshop.php';
 */
 if (isset($_FILES['img']) ) {
 	$allowedExts = array("gif", "jpeg", "jpg", "png", "GIF", "JPEG", "JPG", "PNG");
-	$album = replace_space($_REQUEST['album']);
+	$album = replace_space(trim($_REQUEST['album']));
 	$response = array();
 	foreach ($_FILES["img"]["error"] as $key => $error) {
 		

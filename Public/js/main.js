@@ -5,6 +5,18 @@ function emptyElement(el) {
     $("#" + el).empty();
 }
 
+// restrict input
+function restrict(elem) {
+    var el = $("#" + elem);
+    var reg = new RegExp;
+    if (elem === 'email' || elem === 'albumName') {
+        reg =  /[' " ,]/g;
+    } else {
+        reg = /[^a-z0-9]/gi;
+    }
+   el.val(el.val().replace(reg, ""));
+}
+
 // doesExist();
 jQuery.fn.doesExist = function(){
         return jQuery(this).length > 0;
@@ -102,28 +114,33 @@ function addComment(user, on, app, holder) {
 	var inp = $(".addComment-input"),
 		path = $(location).attr('href'),
 		holder = $(holder);
-
-	$.post("index.php", {'ajax':1, 'parser':'comment' , 'body':inp.val(), 'user':user, 'on':on, 'app':app, 'path': path, 'add_comment':1}, function(data) {
-		console.log(data[0]);
-		if (data[0] === '<') {
-			inp.val('');
-			inp.height(20);
-			holder.prepend(data);
-			holder.mCustomScrollbar("update");
-		} else{
-			// $("#status").html(data);
-		}
-	});
+	if (inp.val()) {
+		$.post("index.php", {'ajax':1, 'parser':'comment' , 'body':inp.val(), 'user':user, 'on':on, 'app':app, 'path': path, 'add_comment':1}, function(data) {
+			console.log(data[0]);
+			if (data[0] === '<') {
+				inp.val('');
+				inp.height(20);
+				holder.prepend(data);
+				holder.mCustomScrollbar("update");
+			} else{
+				// $("#status").html(data);
+			}
+		});
+	}	
 }
-
 /*
 ***********************
 ** =Notifications
 ***********************
 */
-
 function clrNotif(th) {
-	var th = $(th);
+	var th = $(th),
+		title = $(document).attr('title');
+	
+	while (parseInt(title[0], 10) || title[0] == '(' || title[0] == ')') {
+		title = title.replace(title[0], '');
+		$(document).attr('title', title);
+	}
 
 	th.attr('id', 'notificationsChecked');
 	th.attr('onclick', '');
@@ -260,11 +277,11 @@ function getLikers(on, app) {
 	$.post('index.php', {'ajax':1, 'parser':'like', 'type':'getLikers', 'on':on, 'app':app}, function(data) {
 		try {
 			var json = $.parseJSON(data),
-		   	   cards = '',
-		   	   l = json.length,
-		   	   modal = document.createElement("DIV");
+		   	    cards = '',
+		   	    l = json.length,
+		   	    modal = document.createElement("DIV");
 		   	modal = $(modal);
-		   	modal.addClass('modal hide fade likeModal');   
+		   	modal.addClass('modal hide fade likeModal');
 		   for (var i = 0; i < l; i++) {
 			    cards += "<div class='likeCard'>"+
 							"<a href='./"+ json[i].username +"'><img src='"+ json[i].avatar +"' alt='avatar'></a>"+

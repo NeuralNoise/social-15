@@ -53,14 +53,6 @@ if (isset($_GET['activation']) ) {
 			require_once parser($_POST['parser']);
 		}
 
-	} else if (isset($_GET['user']) && isset($_GET['about']) ) {
-		secure('get');
-		require_once check_user();
-		if ($user_ok) {
-			require_once main_inc();
-			require_once controller('user');
-		}
-
 	} else if (isset($_GET['user']) && isset($_GET['notifications']) ) {
 	 	secure('get');
 	 	require_once check_user();

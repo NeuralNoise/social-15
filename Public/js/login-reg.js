@@ -4,17 +4,6 @@
 ***********************
 */
 
-function restrict(elem) {
-    var el = $("#" + elem);
-    var reg = new RegExp;
-    if (elem === 'email') {
-        reg =  /[' " ,]/g;
-    } else if(elem === 'username') {
-        reg = /[^a-z0-9]/gi;
-    }
-   el.val(el.val().replace(reg, ""));
-}
-
 function checkUsername() {
     var u = $("#username").val();
     if (u !== "") {

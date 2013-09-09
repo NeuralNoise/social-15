@@ -247,7 +247,7 @@ header {
 footer {
   background: rgba(0, 0, 0, 0.2);
   overflow: hidden;
-  width: 30%;
+  width: 20%;
   height: 20px;
   position: fixed;
   bottom: 0; }
@@ -317,6 +317,9 @@ footer {
 #save {
   position: absolute;
   left: 80%; }
+
+.sidebar {
+  height: inherit; }
 
 .sidebarButtons {
   text-align: center; }
@@ -430,26 +433,17 @@ footer {
         width: 205px; }
   .photoView_comments .description {
     width: 250px;
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    -ms-word-break: break-all;
+    word-break: break-all;
+    word-break: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto; }
     .photoView_comments .description a {
       color: #333333; }
       .photoView_comments .description a b {
         color: #8209a1; }
-  .photoView_comments ul {
-    list-style: none;
-    margin: 0; }
-    .photoView_comments ul li {
-      border-top: 1px solid gray;
-      padding-top: 5px; }
-      .photoView_comments ul li .photoComment_Avatar img {
-        float: left;
-        margin-right: 5px;
-        width: 35px;
-        height: 35px; }
-      .photoView_comments ul li .photoComment_fullName {
-        margin: 0; }
-      .photoView_comments ul li .photoComment_Body {
-        max-width: 200px; }
   .photoView_comments .addComment {
     margin-bottom: 10px; }
     .photoView_comments .addComment .addComment-input {
@@ -461,6 +455,34 @@ footer {
   #descriptionModal .modal-body textarea {
     width: 90%;
     height: 300px; }
+
+/*
+***********************
+** =Comments
+***********************
+*/
+.commentsWrap {
+  list-style: none;
+  margin: 0; }
+  .commentsWrap li {
+    border-top: 1px solid gray;
+    padding-top: 5px;
+    margin-bottom: 8px; }
+    .commentsWrap li .comment_Avatar img {
+      float: left;
+      margin-right: 5px;
+      width: 35px;
+      height: 35px; }
+    .commentsWrap li .comment_fullName {
+      margin: 0; }
+    .commentsWrap li .comment_Body {
+      max-width: 95%;
+      -ms-word-break: break-all;
+      word-break: break-all;
+      word-break: break-word;
+      -webkit-hyphens: auto;
+      -moz-hyphens: auto;
+      hyphens: auto; }
 
 /*
 ***********************
@@ -594,10 +616,12 @@ footer {
 */
 .writeOnWall {
   margin: 10px 0 20px; }
-  .writeOnWall input[type="text"] {
-    width: 100%;
-    height: 30px;
+  .writeOnWall textarea {
+    resize: none;
+    width: 97.5%;
+    height: 20px;
     padding: 5px;
+    font-size: 16px;
     -webkit-transition: all .3s;
     -moz-transition: all .3s;
     -ms-transition: all .3s;
@@ -606,12 +630,32 @@ footer {
 
 .wallpostCard {
   background: white;
-  margin: 3px 0;
-  padding: 2px;
+  margin: 10px 0;
+  padding: 4px;
   border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 5px; }
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto; }
+  .wallpostCard .wallpostCardName {
+    margin: -52px 0 0 55px; }
   .wallpostCard a img {
     width: 50px;
     height: 50px;
     border-radius: 5px;
     margin-bottom: 5px; }
+  .wallpostCard textarea {
+    resize: none;
+    width: 98%;
+    height: 20px;
+    padding: 5px; }
+  .wallpostCard .wallpostCardBody {
+    margin-top: 8px;
+    text-indent: 56px;
+    max-width: 99%; }
+  .wallpostCard .likes {
+    margin-left: 12px; }

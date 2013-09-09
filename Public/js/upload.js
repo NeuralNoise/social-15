@@ -90,7 +90,7 @@ function addDesc() {
         l = inputs.length,
         status = $("#addDescStatus");
     button.hide();
-    status.html('<img src="img/ajax-load-large.gif">');    
+    status.html('<img src="img/ajax-load-large.gif">');
     for (var i = 0; i < l; i++) {
         var input = inputs.eq(i);
         if (input.val() !== '') {
