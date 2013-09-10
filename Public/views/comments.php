@@ -1,4 +1,8 @@
-<ul id="commentsWrap" class="commentsWrap">
+<?php if (isset($w_id) ): ?>
+    <ul id="<?= $wallpost_comment_wrap ?>" class="commentsWrap">
+<?php else: ?>
+    <ul id="commentsWrap" class="commentsWrap">    
+<?php endif ?>
     <?php foreach ($comments_ar as $comment): ?>
     <?php extract($comment); ?>
         <li>
@@ -15,7 +19,12 @@
             <?php if ($like_comment): ?>
                 <a href="" onclick=" like('comment', '<?= $comment_id ?>', 'unlike'); return false;"><small>Unlike</small></a>
             <?php else: ?>
-                <a href="" onclick=" like('comment', '<?= $comment_id ?>', 'like', '<?= $username ?>'); return false;"><small>Like</small></a>
+                <?php if (isset($w_id) ): ?>
+                    <a href="" onclick=" like('comment', '<?= $comment_id ?>', 'like', '<?= $username ?>', './<?= $this_user->username ?>/post/<?= $w_id ?>'); return false;"><small>Like</small></a>
+                <?php else: ?>
+                    <a href="" onclick=" like('comment', '<?= $comment_id ?>', 'like', '<?= $username ?>'); return false;"><small>Like</small></a>    
+                <?php endif ?>
+                
             <?php endif ?>
             <?php if ($likes_count_comment > 0): ?>
                 <?php if ($likes_count_comment === 1): ?>
@@ -26,6 +35,7 @@
             <?php endif ?>
         </li>
     <?php endforeach ?>
+
     <?php if (isset($comments_count_int) && $comments_count_int > 5): ?>
         <li>
             <a href="./<?= $this_user->username ?>/post/<?= $w_id ?>">View more comments...</a>

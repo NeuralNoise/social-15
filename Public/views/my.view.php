@@ -32,11 +32,6 @@
   </div>
   <div class="span8">
       <h1><?= $title ?>'s Profile</h1>
-	<ul>
-		<li>Am I the owner of this profile: Yes</li>
-		<li>Username: <?= ucfirst($u->username) ?></li>
-		<li>Email: <?= $u->email ?></li>
-	</ul>
 	
 	<div class="frList">
 		<h4>Friends:</h4>

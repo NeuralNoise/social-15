@@ -5,27 +5,35 @@ if ($this_user === null) {
 	header('Location: ' . BASE_DIR . 'message/no_user');
 }
 
-$this_user = new person($_GET['user']);
+$this_user = clone $u;
+$my = true;
+if (strcasecmp($_GET['user'], $u->username) !== 0) {
+	$this_user = new person($_GET['user']);
+	$my = false;
+}
 
 /*
 ***********************
 ** =Add/Remove/Block 
 ***********************
 */
-$cond = array('conditions' => array("blocker= ? AND blockee= ?", $this_user->username, $u->username) );
-$blocked_me = Blockedusers::all($cond);
+if (!$my) {
+	$cond = array('conditions' => array("blocker= ? AND blockee= ?", $this_user->username, $u->username) );
+	$blocked_me = Blockedusers::all($cond);
 
-$cond = array('conditions' => array("blocker= ? AND blockee= ?",$u->username, $this_user->username) );
-$blocked_this_user = Blockedusers::all($cond);
+	$cond = array('conditions' => array("blocker= ? AND blockee= ?",$u->username, $this_user->username) );
+	$blocked_this_user = Blockedusers::all($cond);
 
-$cond = array('conditions' => array('user1 = ? AND user2 = ? AND accepted="1" OR user1 = ? AND user2 = ? AND accepted="1"', $u->username, $this_user->username, $this_user->username, $u->username) );
-$friends = Friends::all($cond);
+	$cond = array('conditions' => array('user1 = ? AND user2 = ? AND accepted="1" OR user1 = ? AND user2 = ? AND accepted="1"', $u->username, $this_user->username, $this_user->username, $u->username) );
+	$friends = Friends::all($cond);
 
-$cond = array('conditions' => array('user1 = ? AND user2 = ? AND accepted="0"', $u->username, $this_user->username) );
-$pending = Friends::all($cond);
+	$cond = array('conditions' => array('user1 = ? AND user2 = ? AND accepted="0"', $u->username, $this_user->username) );
+	$pending = Friends::all($cond);
 
-$cond = array('conditions' => array('user2 = ? AND user1 = ? AND accepted="0"', $u->username, $this_user->username) );
-$waiting = Friends::all($cond);
+	$cond = array('conditions' => array('user2 = ? AND user1 = ? AND accepted="0"', $u->username, $this_user->username) );
+	$waiting = Friends::all($cond);	
+}
+
 
 /*
 ***********************
@@ -71,11 +79,13 @@ if (empty($_GET['post']) && empty($_GET['about']) ) {
 			'date' => $wallpost->date,
 			'comments_count' => $comments_count,
 			'comments_count_int' => $comments_count_int,
+			'wallpost_comment_wrap' => 'wallpost_' . $wallpost->w_id,
 			'likes' => $likes,
 			'likes_count' => $likes_count,
 			'like_it' => $like_it,
 			'w_id' => $wallpost->w_id,
-			'comments_ar' => $comments_ar
+			'comments_ar' => $comments_ar,
+			'wallpost' => 1
 			);
 		array_push($wallposts, $arr);
 	}	
@@ -92,7 +102,7 @@ $wallpost = array();
 if (isset($_GET['post']) ) {
 	$post = true;
 	$wallpost = Wallposts::find($_GET['post']);
-	
+
 	$options = array('conditions' => array('on_ = ? AND app = "wallpost" ', $wallpost->w_id), 'order' => 'date desc');
 	$comments = Comments::all($options);
 	$comments_ar = comment_DAO::prepare_for_view($comments, $u);
@@ -120,7 +130,8 @@ if (isset($_GET['post']) ) {
 		'likes_count' => $likes_count,
 		'like_it' => $like_it,
 		'w_id' => $wallpost->w_id,
-		'comments_ar' => $comments_ar
+		'comments_ar' => $comments_ar,
+		'wallpost_comment_wrap' => 'wallpost_' . $wallpost->w_id
 		);
 }
 
@@ -142,22 +153,31 @@ $birthday = date('F j, Y', strtotime($this_user->birth_date));
 
 $avatar = person_DAO::get_avatar($this_user->username);
 
-$script = "<script src='js/user.js'></script> <script src='js/jquery.autosize.min.js'></script>";
+$script_profile = "<script src='js/profile.js'></script> <script src='js/jquery.autosize.min.js'></script>";
+$style_profile = '';
+if ($my) {
+	$style_profile = '<link rel="stylesheet" href="css/jquery.Jcrop.min.css">';
+	$script_profile .= "</script><script src='js/jquery.Jcrop.min.js'></script>";
+}
+
 if (!empty($blocked_me)) {
 	view("views/user_blocked", array(
 	'this_user' => $this_user,
 	'title' => mb_convert_case($title, MB_CASE_TITLE, "UTF-8"),
 	'xView' => $xView
 	));
-} else if ($about && !empty($friends)) {
+
+} else if ($about && (!empty($friends) || $my) ) {
 	view('views/about', array(
 	'xView' => $xView,
 	'title' => $title,
 	'this_user' => $this_user,
 	'avatar' => $avatar,
-	'birthday' => $birthday
+	'birthday' => $birthday,
+	'my' => $my
 	));
-} else if ($post && !empty($friends)) {
+
+} else if ($post && (!empty($friends) || $my) ) {
 	view('views/wallpost', array(
 	'xView' => $xView,
 	'title' => $title,
@@ -165,20 +185,24 @@ if (!empty($blocked_me)) {
 	'wallpost' => $wallpost,
 	'this_user' => $this_user
 	));
-} else if (!empty($friends) ) {
-	view("views/user_friends", array(
+
+} else if (!empty($friends) || $my) {
+	view("views/profile", array(
 	'this_user' => $this_user,
 	'title' => mb_convert_case($title, MB_CASE_TITLE, "UTF-8"),
 	'avatar' => $avatar,
-	'script_bottom' => $script,
+	'script_bottom' => $script_profile,
+	'style' => $style_profile,
 	'xView' => $xView,
-	'wallposts' => $wallposts
+	'wallposts' => $wallposts,
+	'my' => $my
 	));
+	
 } else {
 	view("views/user", array(
 	'this_user' => $this_user,
 	'title' => mb_convert_case($title, MB_CASE_TITLE, "UTF-8"),
-	'script_bottom' => $script,
+	'script_bottom' => $script_profile,
 	'pending' => $pending,
 	'waiting' => $waiting,
 	'blocked_this_user' => $blocked_this_user,

@@ -60,11 +60,12 @@ class person
 
 		$this->background = $this->useroptions->background;
 		$this->avatar_id = $this->useroptions->avatar_id;
-		if (!empty($this->avatar_id) ) {
-			$this->avatar = Photos::find($this->avatar_id)->path;
-		} else {
+
+		@$this->avatar = glob("user_data/" . $this->username . '/avatar/avatar.*')[0];
+		if (empty($this->avatar) ) {
 			$this->avatar = 'img/default_avatar.jpg';
 		}
+
 		$this->question = $this->useroptions->question;
 		$this->answer = $this->useroptions->answer;
 		$this->hometown = $this->useroptions->hometown;

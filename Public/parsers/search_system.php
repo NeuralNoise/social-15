@@ -1,7 +1,7 @@
 <?php 
 
 if (isset($_POST['method']) && $_POST['method'] == 'normal') {
-	$str = $_POST['str'];
+	$str = trim($_POST['str']);
 	if (empty($str) ) {
 		die;
 	}
@@ -16,10 +16,6 @@ if (isset($_POST['method']) && $_POST['method'] == 'normal') {
 		}
 
 		$users = array();
-		if(($key = array_search('%%', $strs)) !== false) { // unset empty values (if the search string is 'xxx ')
-		    unset($strs[$key]);
-		}
-
 		if (count($strs) == 1) {
 			$options = array('conditions' => array('username LIKE ? || first_name LIKE ? || last_name LIKE ?', $strs[0], $strs[0], $strs[0]));
 			$users = Useroptions::all($options);

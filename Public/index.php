@@ -98,11 +98,8 @@ if (isset($_GET['activation']) ) {
 		require_once check_user();
 		if ($user_ok) {
 			require_once main_inc();
-			if (strcmp($u->username, $_GET['user']) === 0 ) {
-				require_once controller('my');
-			} else {
-				require_once controller('user');
-			}
+			require_once controller('profile');
+
 		}
 		
 	} else if (isset($_GET['p_id']) ) {

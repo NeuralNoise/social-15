@@ -38,10 +38,10 @@ if (isset($_POST['add_comment']) ) {
 		));
 	}
 
-	$full_name = person_DAO::get_full_name($owner);
-	$avatar = person_DAO::get_avatar($owner);
-	$avatar = strstr($avatar, 'u');
+	$full_name = $u->full_name;
+	$avatar = $u->avatar;
 	$now = strtotime($now);
+	$comment_id = $new_c->comment_id;
 	$response = 
 <<<EOF
 <li>
@@ -55,6 +55,7 @@ if (isset($_POST['add_comment']) ) {
 		<p> $body </p>
 	</div>
 	<span data-livestamp="$now" class="liveStamp muted"></span>
+	<a href="" onclick=" like('comment', '$comment_id', 'like', '$owner'); return false;"><small>Like</small></a>
 </li>
 EOF;
 	echo $response;

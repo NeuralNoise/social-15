@@ -9,6 +9,9 @@
   	</div> <!-- End Sidebar -->
   	<div class="span8">
     	<h1>About</h1>
+        <?php if ($my): ?>
+            <a href="./<?= $this_user->username ?>/edit" class="btn ">Edit</a>
+        <?php endif ?>
   		<br>
   	</div>
     <div class="span4">

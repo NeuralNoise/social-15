@@ -110,13 +110,17 @@ function editThumb() {
 ** =Comments
 ***********************
 */
-function addComment(user, on, app, holder) {
-	var inp = $(".addComment-input"),
-		path = $(location).attr('href'),
+function addComment(user, on, app, holder, th) {
+	if (!th) {
+		var inp = $(".addComment-input");	
+	} else {
+		var inp = $(th);
+	}
+	
+	var	path = $(location).attr('href'),
 		holder = $(holder);
 	if (inp.val()) {
 		$.post("index.php", {'ajax':1, 'parser':'comment' , 'body':inp.val(), 'user':user, 'on':on, 'app':app, 'path': path, 'add_comment':1}, function(data) {
-			console.log(data[0]);
 			if (data[0] === '<') {
 				inp.val('');
 				inp.height(20);
@@ -262,8 +266,11 @@ function searchResultsClose() {
 ***********************
 */
 
-function like(app, on, type, user) {
-	var path = path = $(location).attr('href');
+function like(app, on, type, user, path) {
+	if (!path) {
+		var path = $(location).attr('href');	
+	}
+	
 	$.post('index.php', {'ajax':1, 'parser':'like', 'type':type, 'on':on, 'app':app, 'user':user, 'path':path}, function(data) {
 		if (data == 'success') {
 			location.reload();

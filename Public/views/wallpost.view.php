@@ -22,7 +22,7 @@
     <?php endif ?>
     <div class="wallpostCardComments">
         <div class="addComment">
-            <textarea class="addComment-input animated" placeholder="Write a comment" onkeydown="if(event.keyCode == 13 && !event.shiftKey) {addComment('<?= $this_user->username . "', " . $w_id ?>, 'wallpost', '#commentsWrap > .mCustomScrollBox > .mCSB_container'); return false;}"></textarea>
+            <textarea class="addComment-input animated" placeholder="Write a comment" onkeydown="if(event.keyCode == 13 && !event.shiftKey) {addComment('<?= $this_user->username . "', " . $w_id ?>, 'wallpost', '.commentsWrap'); return false;}"></textarea>
         </div>
        <?php require 'views/comments.php'; ?>
     </div>
