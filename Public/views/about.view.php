@@ -1,5 +1,5 @@
-<div class="row-fluid">
-	<div class="span2">
+<div class="row">
+	<div class="span3">
     <!--Sidebar content-->
 	    <div class="avatarBorder">
 	      <a href="./<?= $this_user->username ?>">
@@ -13,8 +13,9 @@
             <a href="./<?= $this_user->username ?>/edit" class="btn ">Edit</a>
         <?php endif ?>
   		<br>
+        <br>
   	</div>
-    <div class="span4">
+    <div class="span5">
     	<h3>Birthday: </h3>
     	<div class="aboutCard">
     		<p><b><?= $birthday ?></b></p>

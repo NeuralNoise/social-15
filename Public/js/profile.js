@@ -59,11 +59,23 @@ function uploadAvatar() {
 }
 
 $("#showAllUsers").on('click', function () {
-	$("#allUsersModal").modal("toggle");
+	$("#allUsersHeader").show();
+	$("#allUsers").show();
+	$("#profileModal").modal("toggle");
 	$('header').slideUp();
 });
-$("#allUsersModal").on('hidden', function () {
+$("#showAllFriends").on('click', function () {
+	$("#allFriendsHeader").show();
+	$("#allFriends").show();
+	$("#profileModal").modal("toggle");
+	$('header').slideUp();
+});
+$("#profileModal").on('hidden', function () {
 	$('header').slideDown();
+	$("#allUsersHeader").hide();
+	$("#allUsers").hide();
+	$("#allFriendsHeader").hide();
+	$("#allFriends").hide();
 });
 
 /*
@@ -196,7 +208,7 @@ function postToWall(user, holder) {
                 	'<p class="wallpostCardBody">'+ post.body +'</p>',
                 	'<div class="wallpostCardButtons">',
                         '<button class="btn btn-link" onclick="like(\'wallpost\', \''+ post.w_id +'\', \'like\', \''+ post.username +'\');">Like</button>',
-	                    '<a href="./'+ post.thisUser +'/post/'+ post.w_id +'" class="btn btn-link">Comments <span id="commentsCount_'+ post.w_id +'"></span></a>',
+	                    '&nbsp;<a href="./'+ post.thisUser +'/post/'+ post.w_id +'" class="btn btn-link">Comments <span id="commentsCount_'+ post.w_id +'"></span></a>',
 	                '</div>',
 	                '<div class="wallpostCardComments">',
 	                    '<div class="addComment">',
@@ -208,8 +220,6 @@ function postToWall(user, holder) {
 			   	].join('');
 			   	container.html(post);
 			   	holder.prepend(container);
-			   	$('textarea').autosize({append: "\n"});
-    			$('textarea:last-child').blur();
     			$('textarea').on('focus', function() {
 					var input = $(this);
 					if (!input.val()) {
@@ -226,7 +236,8 @@ function postToWall(user, holder) {
 				$('textarea').on('keydown', function() {
 					$(".sidebar").height($('body').height());
 				});
-
+				$('textarea').autosize({append: "\n"});
+    			$('textarea:last-child').blur();
 			} catch (e) {
 			   $(".status").html(data);
 			}

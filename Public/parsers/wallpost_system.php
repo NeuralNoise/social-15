@@ -18,7 +18,7 @@ if ($type == 'add') {
 				'message' => $u->full_name . " posted on your wall.",
 				'app' => 'wallpost',
 				'on_id' => $post->w_id,
-				'path' => './post/' . $post->w_id,
+				'path' => './'. $on_user .'/post/' . $post->w_id,
 				'date' => $now
 				));
 	}

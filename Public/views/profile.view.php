@@ -1,5 +1,5 @@
-<div class="row-fluid">
-    <div class="span2 sidebar">
+<div class="row">
+    <div class="span3 sidebar">
         <!--Sidebar content-->
         <div class="avatarBorder">
             <?php if ($avatar[0] !== 'i'): ?>
@@ -34,19 +34,21 @@
             <?php if ($my): ?>
                 <br>
                 <button class="btn btn-info" id="showAllUsers" title="Временно!">All Users</button>
-                <?php include 'views/all_users.php'; ?>
             <?php endif ?>
+            <br>
+            <button class="btn btn-info" id="showAllFriends" title="Временно!">Friends</button>
         </div>
     </div> <!-- End Sidebar -->
     <div class="span8">
         <h1><?= $title ?>'s Profile</h1>
     </div>
-    <div class="span6 writeOnWall">
+    <div class="span7 writeOnWall">
             <form onsubmit="postToWall(); return false; ">
                 <textarea placeholder="Write Something..." onkeydown="if(event.keyCode == 13 && !event.shiftKey) {postToWall('<?= $this_user->username ?>', '.wallposts'); return false;}"></textarea>
             </form>
+            <br>
         </div>
-    <div class="span6 wallposts">
+    <div class="span7 wallposts">
         <?php foreach ($wallposts as $wallpost): ?>
         <?php extract($wallpost) ?>
             <div class="wallpostCard">
@@ -73,7 +75,7 @@
                 <?php endif ?>
                 <div class="wallpostCardComments">
                     <div class="addComment">
-                        <textarea class="addComment-input animated" placeholder="Write a comment" onkeydown="if(event.keyCode == 13 && !event.shiftKey) {addComment('<?= $this_user->username . "', " . $w_id ?>, 'wallpost', '#<?= $wallpost_comment_wrap ?>', this); incrementComments('#commentsCount_<?= $w_id ?>'); return false;}"></textarea>
+                        <textarea class="addComment-input animated" placeholder="Write a comment" onkeydown="if(event.keyCode == 13 && !event.shiftKey) {addComment('<?= $this_user->username . "', " . $w_id ?>, 'wallpost', '#<?= $wallpost_comment_wrap ?>', this, './<?= $this_user->username ?>/post/<?= $w_id ?>'); incrementComments('#commentsCount_<?= $w_id ?>'); return false;}"></textarea>
                     </div>
                    <?php require 'views/comments.php'; ?>
                 </div>
@@ -89,3 +91,4 @@
     </form>
     <?php include 'views/crop_avatar.php'; ?>
 <?php endif ?>
+<?php include 'views/profile_modal.php'; ?>

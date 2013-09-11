@@ -110,20 +110,22 @@ function editThumb() {
 ** =Comments
 ***********************
 */
-function addComment(user, on, app, holder, th) {
+function addComment(user, on, app, holder, th, path) {
 	if (!th) {
 		var inp = $(".addComment-input");	
 	} else {
 		var inp = $(th);
 	}
-	
-	var	path = $(location).attr('href'),
-		holder = $(holder);
+	if (!path) {
+		var	path = $(location).attr('href');	
+	}
+		var holder = $(holder);
 	if (inp.val()) {
 		$.post("index.php", {'ajax':1, 'parser':'comment' , 'body':inp.val(), 'user':user, 'on':on, 'app':app, 'path': path, 'add_comment':1}, function(data) {
 			if (data[0] === '<') {
 				inp.val('');
 				inp.height(20);
+				inp.blur();
 				holder.prepend(data);
 				holder.mCustomScrollbar("update");
 			} else{

@@ -384,10 +384,11 @@ footer {
   left: 80%;
 }
 .sidebar {
-  height: inherit;
+  margin-right: -20px;
 }
 .sidebarButtons {
   text-align: center;
+  margin-right: 30px;
 
   * {
     margin-bottom: 5px;
@@ -778,7 +779,7 @@ footer {
 ***********************
 */
 .writeOnWall {
-  margin: 10px 0 20px;
+  margin: 10px 0 20px 20px;
 
   textarea {
     resize: none;
@@ -796,7 +797,7 @@ footer {
 }
 .wallpostCard {
   background: white;
-  margin: 10px 0;
+  margin: 20px 0;
   padding: 4px;
   border: 1px solid rgba(0, 0, 0, .3);
   border-radius: 5px;

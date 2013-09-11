@@ -14,7 +14,7 @@ if (isset($_POST['add_comment']) ) {
 			Notifications::create(array(
 				'username' => $commenter->owner,
 				'initiator' => $owner,
-				'message' => person_DAO::get_full_name($owner) . " commented on a photo.",
+				'message' => $u->full_name . " commented on a ". $app .".",
 				'app' => 'photo',
 				'on_id' => $on,
 				'path' => $path,
@@ -23,10 +23,12 @@ if (isset($_POST['add_comment']) ) {
 		}
 	}
 	if (strcmp($owner, $user) !== 0 ) {
-		$message = '';
-		if ($app === 'photo') {
-			$message = person_DAO::get_full_name($owner) . " commented on your photo.";	
-		}		
+		$message = $u->full_name . " commented on your ". $app .".";
+		// if ($app === 'photo') {
+		// 	$message = $u->full_name . " commented on your photo.";	
+		// } else if ($app === 'wallpost') {
+		// 	$message = $u->full_name . " commented on your wallpost.";
+		// }
 		Notifications::create(array(
 		'username' => $user,
 		'initiator' => $owner,
