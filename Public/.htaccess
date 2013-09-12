@@ -19,8 +19,14 @@ RewriteRule ^!dependencies/$ index.php?dependencies
 RewriteRule ^!upload$ index.php?upload
 RewriteRule ^!upload/$ index.php?upload
 
+RewriteRule ^!games$ index.php?games
+RewriteRule ^!games/$ index.php?games
+
 RewriteRule ^upload/([a-zA-Z0-9_-]+)$ index.php?upload&album=$1
 RewriteRule ^upload/([a-zA-Z0-9_-]+)/$ index.php?upload&album=$1
+
+RewriteRule ^game/(.+)$ index.php?game=$1
+RewriteRule ^game/(.+)/$ index.php?game=$1
 
 RewriteRule ^message/([a-zA-Z0-9_-]+)$ index.php?message=$1
 RewriteRule ^message/([a-zA-Z0-9_-]+)/$ index.php?message=$1

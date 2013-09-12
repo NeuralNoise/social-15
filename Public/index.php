@@ -1,8 +1,9 @@
 <?php 
 
+session_start();
 mb_internal_encoding("UTF-8");
 require_once 'includes/social.php';
-session_start();
+dd(dirname(__DIR__));
 
 if (isset($_GET['activation']) ) {
  	secure('get');
@@ -10,7 +11,15 @@ if (isset($_GET['activation']) ) {
 
  } else if (isset($_SESSION['name']) && $_SESSION['pass']) {
 
-	if (isset($_GET['dependencies']) ) {
+	if (isset($_GET['game']) || isset($_GET['games']) ) {
+	 	secure('get');
+	 	require_once check_user();
+	 	if ($user_ok) {
+	 		require_once main_inc();
+	 		require_once controller('games');
+	 	}
+
+	 } else if (isset($_GET['dependencies']) ) {
 	 	secure('get');
 	 	require_once check_user();
 	 	if ($user_ok) {

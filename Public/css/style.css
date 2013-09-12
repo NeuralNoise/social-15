@@ -323,9 +323,16 @@ footer {
 
 .sidebarButtons {
   text-align: center;
-  margin-right: 30px; }
+  margin-right: 30px;
+  /*button {
+    width: 104px;
+  }
+  a {
+    width: 80px;
+  }*/ }
   .sidebarButtons * {
-    margin-bottom: 5px; }
+    margin-bottom: 5px;
+    width: 80px; }
 
 /*
 ***********************

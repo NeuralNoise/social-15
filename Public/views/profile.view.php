@@ -33,21 +33,21 @@
             <a href="./<?= $this_user->username ?>/about" class="btn btn-info">About</a>
             <?php if ($my): ?>
                 <br>
-                <button class="btn btn-info" id="showAllUsers" title="Временно!">All Users</button>
+                <a href="" class="btn btn-info" id="showAllUsers" onclick="return false;" title="Временно!">All Users</a>
             <?php endif ?>
             <br>
-            <button class="btn btn-info" id="showAllFriends" title="Временно!">Friends</button>
+            <a href="" class="btn btn-info" id="showAllFriends" onclick="return false;" title="Временно!">Friends (<?= $this_user->dao->friend_count() ?>)</a>
         </div>
     </div> <!-- End Sidebar -->
     <div class="span8">
         <h1><?= $title ?>'s Profile</h1>
     </div>
     <div class="span7 writeOnWall">
-            <form onsubmit="postToWall(); return false; ">
-                <textarea placeholder="Write Something..." onkeydown="if(event.keyCode == 13 && !event.shiftKey) {postToWall('<?= $this_user->username ?>', '.wallposts'); return false;}"></textarea>
-            </form>
-            <br>
-        </div>
+        <form onsubmit="postToWall(); return false; ">
+            <textarea placeholder="Write Something..." onkeydown="if(event.keyCode == 13 && !event.shiftKey) {postToWall('<?= $this_user->username ?>', '.wallposts'); return false;}"></textarea>
+        </form>
+        <br>
+    </div>
     <div class="span7 wallposts">
         <?php foreach ($wallposts as $wallpost): ?>
         <?php extract($wallpost) ?>
