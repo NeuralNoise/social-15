@@ -3,17 +3,26 @@
 session_start();
 mb_internal_encoding("UTF-8");
 require_once 'includes/social.php';
-dd(dirname(__DIR__));
+
 
 if (isset($_GET['activation']) ) {
  	secure('get');
  	require_once parser('activation');
 
  } else if (isset($_SESSION['name']) && $_SESSION['pass']) {
+ 	require_once check_user();
 
-	if (isset($_GET['game']) || isset($_GET['games']) ) {
+	if (isset($_GET['messages']) || isset($_GET['chat']) ) {
 	 	secure('get');
-	 	require_once check_user();
+
+	 	if ($user_ok) {
+	 		require_once main_inc();
+	 		require_once controller('chat');
+	 	}
+
+	 } else if (isset($_GET['game']) || isset($_GET['games']) ) {
+	 	secure('get');
+	 	
 	 	if ($user_ok) {
 	 		require_once main_inc();
 	 		require_once controller('games');
@@ -21,7 +30,7 @@ if (isset($_GET['activation']) ) {
 
 	 } else if (isset($_GET['dependencies']) ) {
 	 	secure('get');
-	 	require_once check_user();
+	 	
 	 	if ($user_ok) {
 	 		require_once main_inc();
 	 		require_once controller('dependencies');
@@ -29,7 +38,7 @@ if (isset($_GET['activation']) ) {
 
 	 } else if (isset($_GET['upload']) ) {
 	 	secure('get');
-	 	require_once check_user();
+	 	
 	 	if ($user_ok) {
 	 		require_once main_inc();
 	 		require_once controller('upload');
@@ -40,7 +49,7 @@ if (isset($_GET['activation']) ) {
 
 	 } else if (isset($_FILES['img']) ) {
 	 	secure('post');
-		require_once check_user();
+		
 		if ($user_ok) {
 			require_once main_inc();
 			require_once parser('photo');
@@ -48,7 +57,7 @@ if (isset($_GET['activation']) ) {
 
 	 } else if (isset($_FILES['avatar']) ) {
 	 	secure('post');
-		require_once check_user();
+		
 		if ($user_ok) {
 			require_once main_inc();
 			require_once parser('photo');
@@ -56,7 +65,7 @@ if (isset($_GET['activation']) ) {
 
 	 } else if (isset($_POST['ajax']) ) {
 		secure('post');
-		require_once check_user();
+		
 		if ($user_ok) {
 			require_once main_inc();
 			require_once parser($_POST['parser']);
@@ -64,7 +73,7 @@ if (isset($_GET['activation']) ) {
 
 	} else if (isset($_GET['user']) && isset($_GET['notifications']) ) {
 	 	secure('get');
-	 	require_once check_user();
+	 	
 	 	if ($user_ok) {
 	 		require_once main_inc();
 	 		require_once controller('notifications');
@@ -72,7 +81,7 @@ if (isset($_GET['activation']) ) {
 
 	 } else if (isset($_GET['message']) ) {
 	 	secure('get');
-	 	require_once check_user();
+	 	
 	 	if ($user_ok) {
 	 		require_once main_inc();
 	 		require_once controller('message');
@@ -80,7 +89,7 @@ if (isset($_GET['activation']) ) {
 
 	} else if (isset($_GET['user']) && isset($_GET['edit']) ) {
 	 	secure('get');
-	 	require_once check_user();
+	 	
 	 	if ($user_ok) {
 	 		require_once main_inc();
 	 		require_once controller('edit');
@@ -88,7 +97,7 @@ if (isset($_GET['activation']) ) {
 
 	} else if (isset($_GET['user']) && isset($_GET['albumView']) ) {
 		secure('get');
-		require_once check_user();
+		
 	 	if ($user_ok) {
 	 		require_once main_inc();
 	 		require_once controller('album');
@@ -96,7 +105,7 @@ if (isset($_GET['activation']) ) {
 
 	} else if (isset($_GET['user']) && isset($_GET['photos']) ) {
 		secure('get');
-		require_once check_user();
+		
 		if ($user_ok) {
 			require_once main_inc();
 			require_once controller('photos');		
@@ -104,7 +113,7 @@ if (isset($_GET['activation']) ) {
 
 	} else if (isset($_GET['user']) ) {
 		secure('get');
-		require_once check_user();
+		
 		if ($user_ok) {
 			require_once main_inc();
 			require_once controller('profile');
@@ -114,14 +123,14 @@ if (isset($_GET['activation']) ) {
 	} else if (isset($_GET['p_id']) ) {
 		secure('get');
 		$p_id = $_GET['p_id'];
-		require_once check_user();
+		
 		if ($user_ok) {
 			require_once main_inc();
 			require_once controller('photo');
 		}
 
 	} else {
-		require_once check_user();
+		
 		if ($user_ok) {	    
 			header("Location: {$u->username}");
 		} else {

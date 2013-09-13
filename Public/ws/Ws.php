@@ -4,32 +4,32 @@ use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 
 class Ws implements MessageComponentInterface {
-    protected $clients;
+    protected $connections;
 
     public function __construct() {
-        $this->clients = new \SplObjectStorage;
+        $this->connections = new \SplObjectStorage;
     }
 
     public function onOpen(ConnectionInterface $conn) {
         // Store the new connection to send messages to later
-        $this->clients->attach($conn);
+        $this->connections->attach($conn);
 
         echo "New connection! ({$conn->resourceId})\n";
     }
 
     public function onMessage(ConnectionInterface $conn, $msg) {
-        if (strcmp(substr($msg, 0, 18), '192837465username:') === 0) {
+        if (strcmp(substr($msg, 0, 19), 'mvql284nf/username:') === 0) {
             if (empty($conn->user) ) {
-                $conn->user = substr($msg, 18);
+                $conn->user = trim(substr($msg, 19) );
             }
-        } else {
-            $numRecv = count($this->clients) - 1;
-            echo sprintf('Connection %s sending message "%s" to %d other connection%s' . "\n"
-                , $conn->user, $msg, $numRecv, $numRecv == 1 ? '' : 's');
 
-            foreach ($this->clients as $client) {
-                if ($conn !== $client) {
+        } else if (strcmp(substr($msg, 0, 13), 'mvql284nf/to:') === 0) {
+            list($to, $msg) = $this->desanitize_msg($msg);
+
+            foreach ($this->connections as $client) {
+                if ($conn !== $client && strcmp($client->user, $to) === 0) {
                     // The sender is not the receiver, send to each client connected
+                    echo "Connection {$conn->user} sending message {$msg} to {$to}. \n";
                     $client->send($msg);
                 }
             }
@@ -39,7 +39,7 @@ class Ws implements MessageComponentInterface {
 
     public function onClose(ConnectionInterface $conn) {
         // The connection is closed, remove it, as we can no longer send it messages
-        $this->clients->detach($conn);
+        $this->connections->detach($conn);
 
         echo "Connection {$conn->user} has disconnected\n";
     }
@@ -48,5 +48,12 @@ class Ws implements MessageComponentInterface {
         echo "An error has occurred: {$e->getMessage()}\n";
 
         $conn->close();
+    }
+
+    private function desanitize_msg($msg) {
+        $msg = trim(substr($msg, 13) );
+        $colon = strpos($msg, ':');
+        return array(substr($msg, 0, $colon), htmlspecialchars(substr($msg, $colon + 1)));
+
     }
 }

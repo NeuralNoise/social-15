@@ -1,34 +1,38 @@
-$(document).ready(function() {  
-    if (!("WebSocket" in window) ) {  
-        // $('#chatLog, input, button, #examples').fadeOut("fast");  
-        // $('<p>Oh no, you need a browser that supports WebSockets. How about <a href="http://www.google.com/chrome">Google Chrome</a>?</p>').appendTo('#container');  
-    } else {  
-  
-    //The user has WebSockets  
-  
-    connect();  
-  
-    function connect(){  
-	    try{
-		var socket,
-			host = "ws://localhost:8000/socket/server/startDaemon.php",
-			socket = new WebSocket(host);
-			
-        socket.onopen = function(e){
-            conn.send('192837465username: bubo'); //18
-        }  
-  
-        socket.onmessage = function(msg){
-        	
-        }  
-  
-        socket.onclose = function(){  
-
-        }             
-	  
-	    } catch(e){  
-	    	alert('<p>Error' + e); 
-	    }  
+wsCode = 'mvql284nf/';
+function connect(){
+	var chat = false;
+	if (true) {
+		
 	}
+    try {
+		var host = "ws://localhost:8080";
+		socket = new WebSocket(host);
 
-});  
+		socket.onopen = function(e) {
+			socket.send(wsCode + 'username:' + username); //19
+
+		};
+
+		socket.onmessage = function(msg){
+			if ($("#chatWrap").html() ) {
+				var chat = $(".chat");
+				chat.html(chat.html() + 'from:' + msg.data + '<br>');
+			}
+		};
+
+		socket.onclose = function() {
+
+		};
+
+	} catch(e) {
+		alert('<p>Error' + e);
+    }
+}
+$(document).ready(function() {
+    if (!("WebSocket" in window) ) {
+        alert('Oh no, you need a browser that supports WebSockets. How about Google Chrome?');
+    } else {  
+    //The user has WebSockets
+		connect();
+	}
+});

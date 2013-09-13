@@ -50,20 +50,17 @@ if (!isset($header) ) {
         <div class="cont container-fluid">
             <?php include $path; ?>
         </div>
-        <?php if (isset($u) ): ?>
-            <?php include 'views/search.view.php'; ?>
-        <?php endif ?>
         <?php if (!$has_name): ?>
             <?php include 'views/add_name.php'; ?>
         <?php endif ?>
         
         <footer>
         	<div id="version">
-             <p>Test Version #11</p>
+                <p>Test Version #11</p>
             </div>
         </footer>
         
-        <script src='js/main.js'></script> 
+        <script src='js/main.js'></script>
         <script src='js/bootstrap.min.js'></script>
         <script src='js/jquery.mCustomScrollbar.concat.min.js'></script>
         <?php 
@@ -73,5 +70,9 @@ if (!isset($header) ) {
         }
         
         ?>
+        <?php if (isset($u) ): ?>
+            <script src='js/ws.js'></script>
+            <?php include 'views/search.view.php'; ?>
+        <?php endif ?>
     </body>
 </html>

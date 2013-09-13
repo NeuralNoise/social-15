@@ -43,6 +43,12 @@ RewriteRule ^([a-zA-Z0-9_-]+)/notifications/$ index.php?user=$1&notifications
 RewriteRule ^([a-zA-Z0-9_-]+)/about$ index.php?user=$1&about
 RewriteRule ^([a-zA-Z0-9_-]+)/about/$ index.php?user=$1&about
 
+RewriteRule ^!messages$ index.php?messages
+RewriteRule ^!messages/$ index.php?messages
+
+RewriteRule ^messages/([a-zA-Z0-9]+)$ index.php?chat=$1
+RewriteRule ^messages/([a-zA-Z0-9]+)/$ index.php?chat=$1
+
 RewriteRule ^([a-zA-Z0-9_-]+)/post/([0-9]+)$ index.php?user=$1&post=$2
 RewriteRule ^([a-zA-Z0-9_-]+)/post/([0-9]+)/$ index.php?user=$1&post=$2
 

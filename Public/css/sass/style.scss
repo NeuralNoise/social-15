@@ -219,12 +219,19 @@ header {
     }
   }
 }
+#headerMessages {
+  position: absolute;
+  left: 595px;
+  margin-top: 7px;
 
-.open {
-  #options {
-    background: url(../img/gear-hover.png);
+  width: 32px;
+  height: 32px;
+  background: url(../img/chat.png);
+  &:hover {
+    background: url(../img/chat-hover.png);
   }
 }
+
 
 .notificationsWrap {
   position: absolute;
@@ -294,6 +301,9 @@ header {
 .open {
   #notificationsChecked {
     background: url(../img/notification-done-hover.png);
+  }
+  #options {
+    background: url(../img/gear-hover.png);
   }
 }
 
@@ -844,5 +854,42 @@ footer {
   }
   .likes {
     margin-left: 12px;
+  }
+}
+
+/*
+***********************
+** =Chat
+***********************
+*/
+#chatWrap {
+  margin-top: 20px;
+  background: white;
+  border-radius: 10px;
+  padding-bottom: 5px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,.4);
+
+  .chat {
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px 0 3px 1%;
+    width: 96%;
+    height: 430px;
+    border: 1px solid #d2d2d2;
+    //
+      -ms-word-break: break-all;
+         word-break: break-all;
+         word-break: break-word;
+
+    -webkit-hyphens: auto;
+       -moz-hyphens: auto;
+            hyphens: auto;
+      //
+  }
+
+  textarea {
+    resize: none;
+    margin: 3px 0 3px 1%;
+    width: 96%;
   }
 }

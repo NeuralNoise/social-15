@@ -19,7 +19,7 @@
 				<li><a href="./!games">Games</a></li>
 				<li><a href="./!dependencies">Dependencies</a></li>
 				<li><a href="./!logout">LogOut</a></li>
-			</ul>	
+			</ul>
 		</div>
 		<div class="dropdown notificationsWrap">
 			<?php if (empty($notif_new) ): ?>
@@ -44,5 +44,6 @@
 				<li><span><a href="./<?= $u->username ?>/notifications">All</a></span></li>
 			</ul>
 		</div>
-	</div>	
+		<a href="./!messages" id="headerMessages"></a>	
+	</div>
 </header>
