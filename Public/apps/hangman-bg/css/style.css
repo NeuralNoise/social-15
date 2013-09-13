@@ -1,0 +1,125 @@
+body {
+	background: #21a7e4 !important;
+	font-family: sans-serif;
+}
+.form {
+	margin-top: 100px;
+	float: left;
+}
+#word {
+	margin-top: 30px;
+	margin-right: 10px;
+	font-size: 35px;
+	letter-spacing: 20px;
+	clear: both;
+}
+#textWrong {
+	color: red;
+	margin-top: 40px;
+	font-size: 35px;
+	letter-spacing: 20px;
+}
+#hang {
+	float: left;
+	width: 500px;
+	height: 500px;
+}
+.over {
+	margin: 100px auto;
+	font-size: 50px;
+	font-weight: bold;
+	width: 500px;
+	color: red;
+	text-shadow: 1px 1px 0 black;
+}
+.overWord {
+	margin: -30px auto 0;
+	font-size: 30px;
+	font-weight: bold;
+	letter-spacing: 5px;
+	width: 500px;
+	color: #ed4d01;
+	text-shadow: 1px 1px 0 black;
+}
+#reset {
+	margin-left: 400px;
+}
+#letters {
+	width: 320px;
+	color: black;
+	overflow: hidden;
+}
+#letters div {
+	width: 40px;
+	margin: 0 5px 5px 0;
+	padding: 0.25em 0;
+	text-align: center;
+	font-weight: bold;
+	font-size: 150%;
+	background-color: #ed4d01;
+	float: left;
+}
+.button {
+	margin-top: 30px;
+	-moz-box-shadow:inset 0px 1px 0px 0px #f29c93;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #f29c93;
+	box-shadow:inset 0px 1px 0px 0px #f29c93;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fe1a00), color-stop(1, #000000) );
+	background:-moz-linear-gradient( center top, #fe1a00 5%, #000000 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fe1a00', endColorstr='#000000');
+	background-color:#fe1a00;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #f05446;
+	display:inline-block;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #000000;
+}
+.button:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #000000), color-stop(1, #fe1a00) );
+	background:-moz-linear-gradient( center top, #000000 5%, #fe1a00 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#fe1a00');
+	background-color:#000000;
+	cursor: pointer;
+}
+.button:active {
+	position:relative;
+	top:1px;
+}
+.language {
+	height: 50px;
+	position: fixed;
+	top: 50px;
+	right: 30px;
+}
+.language ul {
+	list-style: none;
+}
+.language ul li{
+	display: inline;
+	margin-left: 10px;
+	
+}
+.language ul li a {
+	text-decoration: none;
+	padding: 3px;
+	text-align: center;
+	background: #ed4d01;
+	color: black;
+	width: 40px;
+	height: 40px;
+}
+.language ul li a:hover {
+	color: white;
+	cursor: pointer;
+}
+#clicked {
+	background: #006;
+	color: white;
+}
