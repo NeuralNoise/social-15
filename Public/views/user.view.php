@@ -4,15 +4,11 @@
 	  <div class="avatarBorder">
 	  		<img src="<?= $avatar ?>" alt="Avatar" class="avatar">
 	  </div>
-	  
 	</div> <!-- End Sidebar -->
 	<div class="span8">
 		<?php if ($this_user->activated): ?>
 			<h1><?= $title ?>'s Profile</h1>
-			<ul>
-				<li>Am I the owner of this profile: No</li>
-				<li>Username: <?= ucfirst($this_user->username) ?></li>
-			</ul>
+			<br>
 			<?php if (empty($blocked_this_user) ): ?>
 				<?php if (!empty($pending) ): ?>
 					<button class="btn disabled">You have a pending friend request!</button>

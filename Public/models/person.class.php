@@ -17,6 +17,7 @@ class person
 			$online,
 			$last_login,
 			$notif_check,
+			$msg_check,
 			$activated,
 			$ip,
 			$permission,
@@ -54,6 +55,7 @@ class person
 		$this->online = $this->user->online;
 		$this->last_login = $this->user->last_login;
 		$this->notif_check = $this->user->notif_check;
+		$this->msg_check = $this->user->msg_check;
 		$this->activated = $this->user->activated;
 		$this->ip = $this->user->ip;
 		$this->permission = $this->user->permission;

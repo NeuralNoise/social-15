@@ -24,10 +24,10 @@
 		<div class="dropdown notificationsWrap">
 			<?php if (empty($notif_new) ): ?>
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="notificationsChecked" title="Notifications"></a>
-				<span id="numNotifications" hidden></span>		
+				<span id="numNotifications" class="notifications" hidden></span>		
 			<?php else: ?>
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="notificationsPending" title="Notifications" onclick="clrNotif(this);">
-					<span id="numNotifications"><?= count($notif_new)?></span>
+					<span id="numNotifications" class="notifications"><?= count($notif_new)?></span>
 				</a>				
 			<?php endif ?>
 			<ul class="dropdown-menu notificationsDropdown" role="menu" aria-labelledby="dLabel">
@@ -44,6 +44,14 @@
 				<li><span><a href="./<?= $u->username ?>/notifications">All</a></span></li>
 			</ul>
 		</div>
-		<a href="./!messages" id="headerMessages"></a>	
+		<?php if ($u->dao->msg_check()): ?>
+			<a href="./!messages" id="headerMessagesNew">
+				<span class="notifications" id="numMessages"><?= count($u->dao->msg_check())?></span>
+			</a>
+		<?php else: ?>
+			<a href="./!messages" id="headerMessagesNone">
+				<span class="notifications" id="numMessages" hidden></span>
+			</a>
+		<?php endif ?>
 	</div>
 </header>

@@ -104,18 +104,6 @@ $(document).ready(function(){
     $('.animated').blur();
 });
 
-// function checkEnter(th) {
-// 	var th = $(th),
-// 		h = th.height();
-// 	th.keydown(function(e) {
-
-// 		if (e.which === 13) {
-// 			// $("#addCommentButton").click();
-// 			th.height(h + 20);
-// 		}
-// 	});
-// }
-
 // scrollbar
 (function($){
     $(window).load(function(){

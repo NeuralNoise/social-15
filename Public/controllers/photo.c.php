@@ -58,7 +58,7 @@ if ($likes) {
 */
 
 $script_b = "<script src='js/photo.js'></script>
-			<script src='js/jquery.autosize.min.js'></script>
+			<script src='js/vendor/jquery.autosize.min.js'></script>
 			";
 $script_t = '<script>
 				function onImgLoad() {
@@ -70,7 +70,7 @@ $script_t = '<script>
 					$("#commentsWrap").height(h - c);
 				}
 			</script>
-  			<script src="js/jquery.Jcrop.min.js"></script>
+  			<script src="js/vendor/jquery.Jcrop.min.js"></script>
   			 ';
 $style = '<link rel="stylesheet" href="css/jquery.Jcrop.min.css">';
 

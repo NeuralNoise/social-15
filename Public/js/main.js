@@ -18,7 +18,7 @@ function restrict(elem) {
 
 // doesExist();
 jQuery.fn.doesExist = function(){
-        return jQuery(this).length > 0;
+	return jQuery(this).length > 0;
 };
 
 //Set Videos below header
@@ -33,6 +33,35 @@ $("iframe").each(function(){
 	}
 	else $(this).attr('src',ifr_source+'?'+wmode);
 });
+
+// htmlspecialchars
+String.prototype.escapeHtml = function() {
+	var div = document.createElement('div');
+	var text = document.createTextNode(this);
+	div.appendChild(text);
+	return div.innerHTML;
+}
+
+String.prototype.replaceURL = function() {
+	var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+	return this.replace(exp,"<a href='$1' target='_blank'>$1</a>"); 
+}
+
+function prepareChatCard(obj, msg) {
+	var now = Math.round(new Date().getTime() / 1000),
+		h = new Date().getHours(),
+		m = new Date().getMinutes(),
+		timeTitle = h + ':' + m ;
+
+	return '<div class="card">' +
+				'<a href="'+ obj.username +'"><img src="'+ obj.avatar +'" alt="avatar" class="avatar"></a>' +
+				'<div class="name">' +
+					'<a href="'+ obj.username +'">'+ obj.full_name +'</a> ' +
+					'<small><span data-livestamp="'+ now +'" title="'+ timeTitle +'" class="liveStamp muted"></span></small>' +
+				'</div>' +
+				'<p class="msg">'+ msg +'</p>' +
+			'</div>';
+}
 
 /*
 ***********************
@@ -120,7 +149,7 @@ function addComment(user, on, app, holder, th, path) {
 	}
 		var holder = $(holder);
 	if (inp.val()) {
-		$.post("index.php", {'ajax':1, 'parser':'comment' , 'body':inp.val(), 'user':user, 'on':on, 'app':app, 'path': path, 'add_comment':1}, function(data) {
+		$.post("index.php", {'ajax':1, 'parser':'comment' , 'body':inp.val().replaceURL(), 'user':user, 'on':on, 'app':app, 'path': path, 'add_comment':1}, function(data) {
 			if (data[0] === '<') {
 				inp.val('');
 				inp.height(20);
@@ -199,7 +228,7 @@ $(document).ready(function() {
 function addName() {
 	var f_name = $("#addName-f_name").val(),
 		l_name = $("#addName-l_name").val();
-		console.log(f_name, l_name);
+
 	if (f_name == '' || l_name == '') {
 		$("#addName-status").html('Please fill in all fields.');
 	} else if (f_name !== '' && l_name !== '') {

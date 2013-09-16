@@ -89,6 +89,20 @@ body {
 ** =Miscellaneous
 ***********************
 */
+.notifications {
+  position: absolute;
+    bottom: -3px;
+    left: 20px;    
+    background: #d70909;
+    color: white;
+    height: 15px;
+    line-height: 17px;
+    min-width: 16px;
+    text-align: center;
+    border-radius: 4px;
+    padding: 1px;
+    border: 1px solid #740808;
+}
 .likeModal {
 
   .likeCard {
@@ -128,7 +142,7 @@ body {
   transition: height 0.2s;
 }
 .hidden {
-  display: none;
+  display: none !important;
 }
 .point {
   cursor: pointer;  
@@ -219,17 +233,23 @@ header {
     }
   }
 }
-#headerMessages {
+#headerMessagesNew, #headerMessagesNone {
   position: absolute;
   left: 595px;
   margin-top: 7px;
 
   width: 32px;
   height: 32px;
+}
+#headerMessagesNone {
   background: url(../img/chat.png);
+
   &:hover {
     background: url(../img/chat-hover.png);
   }
+}
+#headerMessagesNew {
+  background: url(../img/chat-new.png);
 }
 
 
@@ -282,20 +302,6 @@ header {
     &:hover {
       background: url(../img/notification-pending-hover.png);
     }
-  }
-  #numNotifications {
-    position: absolute;
-    bottom: -3px;
-    right: 20px;    
-    background: #d70909;
-    color: white;
-    height: 15px;
-    line-height: 17px;
-    min-width: 16px;
-    text-align: center;
-    border-radius: 4px;
-    padding: 1px;
-    border: 1px solid #740808;
   }
 }
 .open {
@@ -674,7 +680,7 @@ footer {
 
 /*
 ***********************
-** =All Notifications View
+** =Notifications View
 ***********************
 */
 .allNotifications_wrap {
@@ -748,9 +754,9 @@ footer {
 .dependencies {
   
   a {
-    padding: 20px;
     
     img {
+      margin: 10px;
       padding: 5px;
       background: white;
       border-radius: 10px;
@@ -885,11 +891,89 @@ footer {
        -moz-hyphens: auto;
             hyphens: auto;
       //
+      .card {
+        margin-top: 20px;
+      
+        .name {
+          margin: -40px 0 0 45px;
+
+          small {
+            float: right;
+          }
+        }
+        .avatar {
+          width: 40px;
+          height: 40px;
+          border-radius: 5px;
+        }
+        
+        .msg {
+          margin-left: 45px;
+        }
+      }
   }
 
   textarea {
     resize: none;
     margin: 3px 0 3px 1%;
     width: 96%;
+    height: 15px;
   }
+}
+
+/*
+***********************
+** =Messages
+***********************
+*/
+.conversations {
+  margin-top: 20px;
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 2px 2px 5px rgba(0,0,0,.4);
+  
+  ul {
+    list-style-type: none;
+    margin: 0;
+
+    li {
+      padding: 10px 0;
+      margin-bottom: 15px;
+      text-align: center;
+      border-bottom: 1px solid #d2d2d2;
+
+      &:last-child {
+        border-bottom: none;
+      }
+      a {
+        /*margin-right: 10px;*/
+        width: 100%;
+        height: 100%;
+      }
+      &:hover {
+        background: $baseColor-darken;
+        border-radius: 10px;
+
+        a {
+          color: white;
+          font-weight: bold;
+        }
+        .tick {
+          content:url("../img/tick-white.png");
+        }
+      }
+    }
+  }
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+  }
+}
+#writing {
+  height: 17px;
+  margin-bottom: 0;
+  margin-right: 20px;
+  float: right;
 }

@@ -153,11 +153,11 @@ $birthday = date('F j, Y', strtotime($this_user->birth_date));
 
 $avatar = person_DAO::get_avatar($this_user->username);
 
-$script_profile = "<script src='js/profile.js'></script> <script src='js/jquery.autosize.min.js'></script>";
+$script_profile = "<script src='js/profile.js'></script> <script src='js/vendor/jquery.autosize.min.js'></script>";
 $style_profile = '';
 if ($my) {
 	$style_profile = '<link rel="stylesheet" href="css/jquery.Jcrop.min.css">';
-	$script_profile .= "</script><script src='js/jquery.Jcrop.min.js'></script>";
+	$script_profile .= "</script><script src='js/vendor/jquery.Jcrop.min.js'></script>";
 }
 
 if (!empty($blocked_me)) {

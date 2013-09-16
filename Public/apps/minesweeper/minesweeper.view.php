@@ -1,7 +1,11 @@
 <button id="showScore" onclick="showScore()">High Scores</button>
 <h1 id="heading">Minesweeper</h1>
-<div class="timerWrap" id="timerWrap"><div id="timer" class="timer"></div></div>
-<div id="stage" class="stage" oncontextmenu="javascript: return false;"></div>
+<div class="timerWrap" id="timerWrap">
+	<div id="timer" class="timer"></div>
+</div>
+<div id="stage" class="stage" oncontextmenu="javascript: return false;">
+	
+</div>
 <button id="res" onclick="location.reload()">Reset!</button>
 <div id="mask">
 	<div id="score">

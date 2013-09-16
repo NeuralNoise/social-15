@@ -30,14 +30,7 @@ class person_DAO
 		}
 
 		sort($all, SORT_STRING);
-		// $friends = array();
-		// foreach ($all as $name) {
-		// 	$fr = User::find_by_username($name);
-		// 	array_push($friends, $fr);
-		// }
-
 		return $all;
-
 	}
 
 	public function friend_count() {
@@ -72,6 +65,12 @@ class person_DAO
 		return Notifications::all($options);
 	}
 
+	public function msg_check() {
+		$options = array('conditions' => array('to_user = ? AND date > ?', $this->username, $this->msg_check),
+						 'group' => 'from_user' );
+		return Chat::all($options);
+	}
+
 	public function all_notif($limit = '') {
 		$options = array('conditions' => array('username = ?', $this->username), 'order' => 'date desc', 'limit' => $limit);
 		return Notifications::all($options);
@@ -81,6 +80,7 @@ class person_DAO
 		$this->update(array('notif_check' => now() ));
 	}
 
+	// returns the full avatar
 	public static function get_avatar_full($username) {
 		$user = Useroptions::find($username);
 		if (empty($user->avatar_id) ) {
@@ -89,6 +89,7 @@ class person_DAO
 		return Photos::find($user->avatar_id)->path;
 	}
 
+	// returns the thumbnail
 	public static function get_avatar($user) {
 	    @$avatar = glob("user_data/" . $user . '/avatar/avatar.*')[0];
 	    if (empty($avatar) ) {

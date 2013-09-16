@@ -187,7 +187,7 @@ var wallpostInput = $(".writeOnWall > form > textarea"),
 
 function postToWall(user, holder) {
 	var input = wallpostInput,
-		body = input.val(),
+		body = input.val().replaceURL(),
 		holder = $(holder);
 	if (body) {
 		input.val('');
@@ -251,7 +251,6 @@ function incrementComments(el) {
 		val = Number(val.match(/\d+\.?\d*/g)),
 		newVal = val + 1;
 	el.html(' ('+ newVal +')');
-	console.log(el, val, newVal);
 }
 
 $('textarea').on('focus', function() {

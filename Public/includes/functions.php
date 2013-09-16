@@ -46,19 +46,35 @@ function parser($file_name) {
     return 'parsers/' . $file_name . '_system.php';
 }
 
+function sanitize($text) {
+    $text = htmlspecialchars($text, ENT_QUOTES);
+    $text = str_replace("\n\r","\n",$text);
+    $text = str_replace("\r\n","\n",$text);
+    $text = str_replace("\n","<br>",$text);
+    $text = str_replace("&lt;a","<a",$text);
+    $text = str_replace("href=&#039;","href='",$text);
+    $text = str_replace("&#039;&gt;http://","'>http://",$text);
+    $text = str_replace("&#039;&gt;https://","'>https://",$text);
+    $text = str_replace("&#039;&gt;ftp://","'>ftp://",$text);
+    $text = str_replace("&#039;&gt;file://","'>file://",$text);
+    $text = str_replace("&lt;/a&gt;","</a>",$text);
+    $text = str_replace("&#039; target=&#039;_blank'","' target='_blank'",$text);
+    return $text;
+}
+
 function secure($val) {
 	if ($val === 'post') {
-		$_POST = @array_map('htmlspecialchars', $_POST);
-		$_POST = @array_map('addslashes', $_POST);
+		$_POST = @array_map('sanitize', $_POST);
+		$_POST = @array_map('mysql_real_escape_string', $_POST);
 	} else if ($val === 'get') {
-		$_GET = @array_map('htmlspecialchars', $_GET);
-		$_GET = @array_map('addslashes', $_GET);
+		$_GET = @array_map('sanitize', $_GET);
+		$_GET = @array_map('mysql_real_escape_string', $_GET);
 	} else if ($val === 'session') {
-        $_SESSION = @array_map('htmlspecialchars', $_SESSION);
-        $_SESSION = @array_map('addslashes', $_SESSION);
+        $_SESSION = @array_map('sanitize', $_SESSION);
+        $_SESSION = @array_map('mysql_real_escape_string', $_SESSION);
     } else if ($val === 'cookie') {
-        $_COOKIE = @array_map('htmlspecialchars', $_COOKIE);
-        $_COOKIE = @array_map('addslashes', $_COOKIE);
+        $_COOKIE = @array_map('sanitize', $_COOKIE);
+        $_COOKIE = @array_map('mysql_real_escape_string', $_COOKIE);
     } else {
 		throw new Exception("Error Processing Request: Function secure only works with 'post', 'get', 'cookie' and 'session'", 1);		
 	}

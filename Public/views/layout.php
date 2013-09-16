@@ -33,9 +33,9 @@ if (!isset($header) ) {
         <link rel="stylesheet" href="css/bootstrap.css">        
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
-        <script src='js/jQuery.js'></script>
-        <script src="js/moment.js"></script>
-        <script src="js/livestamp.js"></script>
+        <script src='js/vendor/jQuery.js'></script>
+        <script src="js/vendor/moment.js"></script>
+        <script src="js/vendor/livestamp.js"></script>
         
         <?php 
         
@@ -61,8 +61,14 @@ if (!isset($header) ) {
         </footer>
         
         <script src='js/main.js'></script>
-        <script src='js/bootstrap.min.js'></script>
-        <script src='js/jquery.mCustomScrollbar.concat.min.js'></script>
+        <script src='js/vendor/bootstrap.min.js'></script>
+        <script src='js/vendor/jquery.mCustomScrollbar.concat.min.js'></script>
+        
+        <?php if (isset($u) ): ?>
+            <script src='js/ws.js'></script>
+            <?php include 'views/search.view.php'; ?>
+        <?php endif ?>
+
         <?php 
         
         if (isset($script_bottom) ) {
@@ -70,9 +76,5 @@ if (!isset($header) ) {
         }
         
         ?>
-        <?php if (isset($u) ): ?>
-            <script src='js/ws.js'></script>
-            <?php include 'views/search.view.php'; ?>
-        <?php endif ?>
     </body>
 </html>
