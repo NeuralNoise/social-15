@@ -1,4 +1,6 @@
 <?php 
+// When I wrote this, only God and I understood what I was doing
+// Now, God only knows
 
 session_start();
 mb_internal_encoding("UTF-8");
