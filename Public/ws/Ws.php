@@ -66,7 +66,6 @@ class Ws implements MessageComponentInterface {
                 $client->send(json_encode($res) );
             }
         }
-        echo 'yeah';
     }
 
     private function send($req, $msg, $conn) {

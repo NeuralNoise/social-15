@@ -32,7 +32,7 @@
             <a href="<?= $this_user->username . '/photos/all' ?>" class="btn btn-info" id="showPictures">Photos</a>
             <a href="./<?= $this_user->username ?>/about" class="btn btn-info">About</a>
             <?php if ($my): ?>
-                <a href="" class="btn btn-info" id="showAllUsers" onclick="return false;" title="Временно!">All Users</a>
+                <!-- <a href="" class="btn btn-info" id="showAllUsers" onclick="return false;" title="Временно!">All Users</a> -->
             <?php endif ?>
             <a href="" class="btn btn-info" id="showAllFriends" onclick="return false;" title="Временно!">Friends (<?= $this_user->dao->friend_count() ?>)</a>
         </div>

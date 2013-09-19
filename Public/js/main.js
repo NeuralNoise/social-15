@@ -195,7 +195,7 @@ $(document).ready(function() {
 						lastNotifTime = $(".notificationsDropdown>li:eq(1)>a>span").attr('data-time'),
 						l = dataObj.length;
 					for (var i = 0; i < l; i++) {
-						if (dataObj[i].time > lastNotifTime) { // if this notification is not yet appended
+						if (dataObj[i].time > lastNotifTime || !lastNotifTime) { // if this notification is not yet appended
 							var title = '(' + l + ') ' + defTitle;
 							$(document).attr('title', title);
 							$(".notificationsDropdown>li:eq(0)").after(dataObj[i].append);

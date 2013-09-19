@@ -36,8 +36,11 @@ function connect() {
 				
 
 			} else {
-				var snd = new Audio("chat_alert.mp3");
-				snd.play();
+				if (!data.writing) {
+					var snd = new Audio("chat_alert.mp3");
+					snd.play();
+				}
+				
 			}
 			if (!data.writing) {
 				$('#headerMessagesNone').attr('id', 'headerMessagesNew');

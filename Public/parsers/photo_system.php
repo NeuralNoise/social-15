@@ -280,13 +280,11 @@ if (isset($_POST['makeProfile']) ) {
 	$tmp_createFolders = true;
 	$tmp_backgroundColor = null;
 	$tmp_imageQuality = 95;
-	$tmp = glob($tmp_dirPath . 'tmp*');
-	foreach ($tmp as $tmp) {	
+	$tmp = glob($tmp_dirPath . '*');
+	foreach ($tmp as $tmp) {
 		unlink($tmp);		
 	}
 	$layer->save($tmp_dirPath, $tmp_filename, $tmp_createFolders, $tmp_backgroundColor, $tmp_imageQuality);
-	$user->avatar_id = $id;
-	$user->save();
 	if (strcasecmp($p->album, 'profile_pictures') !== 0) {
 		$new_name = photo_name_generator($ext);
 		$new_photo = Photos::create(array(
@@ -298,6 +296,11 @@ if (isset($_POST['makeProfile']) ) {
 		if (!copy($p->path, $new_photo->path)) {
 			echo 'error';die();
 		}
+		$user->avatar_id = $new_photo->p_id;
+		$user->save();
+	} else {
+		$user->avatar_id = $id;
+		$user->save();
 	}
 	echo "user_data/" . $user->username . '/avatar/' . $tmp_filename;
 	die();

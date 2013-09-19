@@ -47,9 +47,7 @@ function uploadAvatar() {
 						cropImage();
 						path = data;
 					} else {
-						// alert(data);
-						$("#status").html(data);
-						// location.reload();
+						// $("#status").html(data);
 					}
 					 
 				}
@@ -94,7 +92,7 @@ function addFr(user2) {
 			if (data === 'success') {
 				location.reload();
 			} else {
-				status.html(data);
+				// status.html(data);
 			}
 		});
 	} 	
@@ -109,7 +107,7 @@ function acceptFr(user1) {
 				if (data === 'success') {
 					location.reload();
 				} else {
-					status.html(data);
+					// status.html(data);
 				}
 			});
 		}
@@ -124,7 +122,7 @@ function revoke(user2) {
 				if (data === 'success') {
 					location.reload();
 				} else {
-					status.html(data);
+					// status.html(data);
 				}
 			});
 		}
@@ -139,7 +137,7 @@ function remFr(user2) {
 				if (data === 'success') {
 					location.reload();
 				} else {
-					status.html(data);
+					// status.html(data);
 				}
 			});
 		}
@@ -156,7 +154,7 @@ function block(blockee) {
 			if (data === 'success') {
 				location.reload();
 			} else {
-				status.html(data);
+				// status.html(data);
 			}
 		});
 	}
@@ -171,7 +169,7 @@ function unblock(blockee) {
 			if (data === 'success') {
 				location.reload();
 			} else {
-				status.html(data);
+				// status.html(data);
 			}
 		});
 	}
